@@ -9,7 +9,7 @@ Akul is typing some giberish.
 
 
 
-Akul is typing some giberish.
+
 
 Have at it folks!
 
