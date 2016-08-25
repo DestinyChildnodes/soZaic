@@ -66,9 +66,3 @@ Mess mMARTINe up!!!!
 
 
 <a href='yowaddup.com'>Yo!!! Waddup!!!</a>
-<<<<<<< 22c834eb68fb0e2980e9f64b893af0614662b35b
-
-
-=======
->>>>>>> Add angular module and merge-conflict test file
-:):):):)MARTIN:):):):)
