@@ -6,7 +6,7 @@ MARTIN MARTIN MARTIN
 Mess mMARTINe up!!!!
 Akul is typing some giberish.
 
-Have at it folks!
+
 
 Akul is typing some giberish.
 
@@ -32,3 +32,6 @@ Mess mMARTINe up!!!!
 
 
 <a href='yowaddup.com'>Yo!!! Waddup!!!</a>
+
+
+:):):):)MARTIN:):):):)
