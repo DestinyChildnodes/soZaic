@@ -46,8 +46,8 @@ Mess mMARTINe up!!!!
 
 <a href='yowaddup.com'>Yo!!! Waddup!!!</a>
 
-Have at iMARTINt folks!
-MARTIN MARTIN MARTIN
+Thang THan Thang
+Than gmesss up
 Mess mMARTINe up!!!!
 
 
