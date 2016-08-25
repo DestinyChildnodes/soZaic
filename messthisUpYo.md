@@ -17,6 +17,7 @@ Have at it folks!
 :):):):)MARTIN:):):):)
 
 
+
 Akul is typing some giberish.
 
 Have at it folks!
@@ -43,4 +44,14 @@ Have at iMARTINt folks!
 MARTIN MARTIN MARTIN
 Mess mMARTINe up!!!!
 
-:):):):)MARTIN:):):):)
+
+
+
+
+Mess me up!!!!
+
+:):):):):):):):)
+
+
+
+<a href='yowaddup.com'>Yo!!! Waddup!!!</a>
