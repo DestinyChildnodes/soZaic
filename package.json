@@ -4,7 +4,8 @@
   "description": "Social Media Mosaic",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "chai",
+    "postinstall": "node_modules/bower/bin/bower install"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,10 @@
   },
   "homepage": "https://github.com/akulaggarwal/soZaic#readme",
   "dependencies": {
-    "angular": "^1.5.8"
+    "bower": "1.7.9",
+    "chai": "^3.5.0",
+    "express": "^4.14.0",
+    "express-partials": "^0.3.0",
+    "express-session": "^1.14.0"
   }
 }
