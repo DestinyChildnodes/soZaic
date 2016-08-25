@@ -1,7 +1,7 @@
-Akul is typing some giberish.
+MARTIN is typing some giberiMARTINsh.
 
-Have at it folks!
+Have at iMARTINt folks!
+MARTIN MARTIN MARTIN 
+Mess mMARTINe up!!!!
 
-Mess me up!!!!
-
-:):):):):):):):)
+:):):):)MARTIN:):):):)
