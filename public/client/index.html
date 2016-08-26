@@ -2,11 +2,9 @@
 <html>
   <head>
   	<title>soZaic</title>
+    <script src="../node_modules/angular/angular.js"></script>
   </head>
   <body ng-app="sozaicApp">
-    <script src="./bower_components/angular/angular.min.js"></script>
-    <script src="./bower_components/angular/angular.js"></script>
-    <script src='./app.js'></script>
 	  <h1>soZaic</h1>
     <navigation class="nav">
       <span ng-controller="TwitterController">
@@ -16,7 +14,7 @@
       </navigation>
       <div class="appView" ng-view></div>
 	    <link rel="stylesheet" href="style.css">
-      <script src="./app.js"></script>
 	</body>
+  <script src="./app.js"></script>
 
 </html>
