@@ -15,12 +15,12 @@ angular.module(`sozaicApp`, [`ui.router`])
   $stateProvider
     .state(`fbFeed`, {
       url: '/feed/facebook',
-      template: `<div>hello</div>`,
-      // controller: `FbController`
+      templateUrl: `/pages/facebook.html`,
+      controller: `FbController`
 
-      controller: function() {
-        console.log('hey')
-      }
+      // controller: function() {
+      //   console.log('hey')
+      // }
     })
 })
 
