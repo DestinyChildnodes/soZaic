@@ -1,11 +1,19 @@
-<doctype! HTML>
+<doctype! html>
 <html>
-<head>
-	<title>s o Z i a c</title>
-</head>
-<body>
-	<h1>Hello World!</h1>
-	<navigation>facbook instagram twitter</navigation>
-	<link rel="stylesheet" href="style.css">
+  <head>
+  	<title>soZaic</title>
+    <script src="../node_modules/angular/angular.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/angular2-all-testing.umd.dev.js"></script> -->
+  </head>
+  <body ng-app="sozaicApp">
+	  <h1>soZaic</h1>
+    <navigation>
+      <span ng-controller="fbController">
+        {{ title }}
+      </span>
+      instagram twitter
+      </navigation>
+	    <link rel="stylesheet" href="style.css">
 	</body>
+  <script src="./app.js"></script>
 </html>
