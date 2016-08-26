@@ -11,16 +11,26 @@ angular.module(`sozaicApp`, [`ui.router`])
   }
 })
 
+.controller('YouTubeController', function($scope) {
+  console.log(`controller fb`)
+  $scope.title = `facebook`;
+  $scope.info = `1111111`;
+  console.log('hello world');
+  $scope.selected = function() {
+  }
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state(`fbFeed`, {
-      url: '/feed/facebook',
-      templateUrl: `/pages/facebook.html`,
+      url: `/feed/facebook`,
+      templateUrl: `/pages/facebook/facebook.html`,
       controller: `FbController`
-
-      // controller: function() {
-      //   console.log('hey')
-      // }
+    })
+    .state(`youTubeFeed`, {
+      url: `/feed/youtube`,
+      templateUrl: `/pages/youtube/youtube.html`,
+      controller: `YouTubeController`
     })
 })
 
