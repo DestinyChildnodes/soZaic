@@ -48,6 +48,10 @@ angular.module(`sozaicApp`, [`ui.router`])
       console.log(data);
     })
   }
+  $scope.youTubeGet = function(){
+    
+    //'https://gdata.youtube.com/feeds/api/users/default/subscriptions?v=2'
+  };
 })
 
 .factory(`YTAuthorize`, function($http){
@@ -57,6 +61,10 @@ angular.module(`sozaicApp`, [`ui.router`])
       method: 'POST',
       url: './pages/youtube/ytlogin.html'
     })
+  }
+
+  return {
+    ytAuthorize : ytAuthorize
   }
 })
 
