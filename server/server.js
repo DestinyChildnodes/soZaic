@@ -1,9 +1,11 @@
-const express = require('express');
+`use strict`;
+
+const express = require(`express`);
+const path = require(`path`);
 const app = express();
 
-
-require(`./serverController/middleware.js`)(app, express)
-
-const port = process.env.PORT || 8080
-console.log(`Server is running on port 8080`);
+app.use(express.static(`${__dirname}/../public/client`));
+// console.log(`${__dirname}/../node_modules`);
+// app.use(express.static(`${__dirname}\..\node_modules`));
+const port = process.env.PORT || 8080;
 app.listen(port);
