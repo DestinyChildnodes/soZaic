@@ -5,5 +5,7 @@ client/bower_components
 .LSOverride
 azure.err
 npm-debug.log
-server/apiKey.js
+
 public/dist
+
+server/apiKeys.js

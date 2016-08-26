@@ -1,5 +1,5 @@
 const Twitter = require('twitter');
-const key = require('apiKeys.js')
+const key = require('./apiKeys.js')
 
 const client = {
   twitter: new Twitter({
@@ -9,7 +9,7 @@ const client = {
     access_token_secret: key.twitter.TWITTER_ACCESS_TOKEN_SECRET
   }),
 
-  instagra: {
+  instagram: {
 
   },
 
@@ -22,7 +22,7 @@ const client = {
   }
 };
 
-exports.module =  {
+module.exports =  {
   twitterGET: () => {
     const params = {screen_name: 'nodejs'};
     client.twitter.get('statuses/user_timeline', params, function(error, tweets, response) {
