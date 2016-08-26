@@ -1,20 +1,24 @@
 <doctype! html>
 <html>
   <head>
-  	<title>soZaic</title>
-    <script src="../node_modules/angular/angular.js"></script>
+    <title>soZaic</title>
+    <!-- <script src="../node_modules/angular/angular.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+    <!-- <script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script> -->
   </head>
   <body ng-app="sozaicApp">
-	  <h1>soZaic</h1>
-    <navigation class="nav">
-      <span ng-controller="TwitterController">
-        {{ title }}
+    <h1>soZaic</h1>
+    <navigation>
+      <span>
+        click here
       </span>
       instagram twitter
       </navigation>
-      <div class="appView" ng-view></div>
-	    <link rel="stylesheet" href="style.css">
-	</body>
-  <script src="./app.js"></script>
+      <link rel="stylesheet" href="style.css">
 
+      <div class="views" ui-view>
+      </div>
+  </body>
+  <script src="./app.js"></script>
 </html>
