@@ -6,3 +6,4 @@ client/bower_components
 azure.err
 npm-debug.log
 server/apiKey.js
+public/dist
