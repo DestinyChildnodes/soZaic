@@ -1,4 +1,26 @@
+@font-face {
+	font-family: Sandoval;
+	src: url(sandoval.regular.ttf);
+}
+
+body {
+	background-color: #fefbf7;
+}
+
 h1 {
-  text-align: center;
-  color: red;
+  text-align: left;
+  font-family: Sandoval;
+  font-size: 50px;
+  color: #D64933;
+}
+
+.appView {
+	color: #2B303A;
+}
+
+.nav {
+	background-color: #92DCE5;
+	color: #fefbf7;
+	font-style: bold;
+	font-family: sans-serif;
 }
