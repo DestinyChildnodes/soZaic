@@ -1,5 +1,5 @@
 const Twitter = require('twitter');
-const key = require('apiKey.js')
+const key = require('apiKeys.js')
 
 const client = {
   twitter: new Twitter({
