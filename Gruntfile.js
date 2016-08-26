@@ -48,7 +48,7 @@ module.exports = function(grunt) {
 
     nodemon: {
       dev: {
-        script: 'server.js'
+        script: 'server/server.js'
       }
     },//end of nodemon
 
@@ -99,7 +99,6 @@ grunt.registerTask('server-dev', function (target) {
   });
   nodemon.stdout.pipe(process.stdout);
   nodemon.stderr.pipe(process.stderr);
-
   grunt.task.run([ 'watch' ]);
 });
 
@@ -107,7 +106,7 @@ grunt.registerTask('jshints',[
   'jshint'
 ]);
 
-grunt.registerTask('cssminz',[
+grunt.registerTask('cssmins',[
   'cssmin'
 ]);
 
@@ -119,15 +118,26 @@ grunt.registerTask('uglifys',[
   'uglify'
 ]);
 
-grunt.registerTask('upload', [
-  if(grunt.option('prod')){
+
+grunt.registerTask('build',[
+  'jshints',
+  'cssmins',
+  'concats',
+  'uglifys'
+]);
+
+grunt.registerTask('upload', function() {
+  if(grunt.option('prod')) {
+    // add your production server task here
     grunt.task.run(['shell:heroku']);
   } else {
-      grunt.task.run([ 'server-dev' ]);
+    grunt.task.run([ 'server-dev' ]);
   }
-]);
+});
+
 
 grunt.registerTask('deploy', [
   'build',
   'upload'
 ]);
+}
