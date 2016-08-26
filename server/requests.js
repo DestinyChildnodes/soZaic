@@ -1,5 +1,6 @@
 const Twitter = require('twitter');
 const key = require('./apiKeys.js')
+const ig = require('instagram-node').instagram();
 
 const client = {
   twitter: new Twitter({
@@ -9,8 +10,11 @@ const client = {
     access_token_secret: key.twitter.TWITTER_ACCESS_TOKEN_SECRET
   }),
 
-  instagram: {
-
+  instagram: () => {
+    api.use({
+      client_id: key.instagram.ClientID,
+      client_secret: key.instagram.ClientSecret
+    });
   },
 
   facebook: {
