@@ -6,12 +6,13 @@
   </head>
   <body ng-app="sozaicApp">
 	  <h1>soZaic</h1>
-    <navigation>
-      <span ng-controller="fbController">
+    <navigation class="nav">
+      <span ng-controller="TwitterController">
         {{ title }}
       </span>
       instagram twitter
       </navigation>
+      <div class="appView" ng-view></div>
 	    <link rel="stylesheet" href="style.css">
 	</body>
   <script src="./app.js"></script>
