@@ -2,18 +2,21 @@
 <html>
   <head>
   	<title>soZaic</title>
-    <script src="../node_modules/angular/angular.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/angular2-all-testing.umd.dev.js"></script> -->
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
   </head>
   <body ng-app="sozaicApp">
 	  <h1>soZaic</h1>
     <navigation>
-      <span ng-controller="fbController">
-        {{ title }}
+      <span>
+        click here
       </span>
       instagram twitter
       </navigation>
 	    <link rel="stylesheet" href="style.css">
+
+      <div class="views" ng-view>
+      </div>
 	</body>
   <script src="./app.js"></script>
 </html>
