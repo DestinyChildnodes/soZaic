@@ -1,8 +1,11 @@
 //TODO: Need to add twitter api
-var request = require('../../requests.js');
+var apiRequest = require('../../requests.js');
 
 module.exports = {
-  getData: () => {
-    request.twitterGET();
+  getData: (req, res, screen_name) => {
+    apiRequest.twitterGET((screen_name, tweets) => {
+      console.log("inside twitterGEt")
+      res.send(tweets);
+    });
   }
 }
