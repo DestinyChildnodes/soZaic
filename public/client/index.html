@@ -1,13 +1,11 @@
 <doctype! html>
-<html>
+<html ng-app="sozaicApp">
   <head>
     <title>soZaic</title>
-    <!-- <script src="../node_modules/angular/angular.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
-    <!-- <script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script> -->
   </head>
-  <body ng-app="sozaicApp">
+  <body>
     <h1>soZaic</h1>
     <navigation class="nav">
       <span>
@@ -31,5 +29,7 @@
 
     <div class="views" ui-view></div>
   </body>
+  <script src="./service/controllers.js"></script>
+  <script src="./service/services.js"></script>
   <script src="./app.js"></script>
 </html>

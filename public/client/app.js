@@ -1,24 +1,7 @@
 `use strict`;
 
-angular.module(`sozaicApp`, [`ui.router`])
+angular.module(`sozaicApp`, [`sozaicApp.controller`,`sozaicApp.serviceFactories`, `ui.router`])
 
-.controller(`FbController`, function($scope) {
-  console.log(`controller fb`)
-  $scope.title = `facebook`;
-  $scope.info = `1111111`;
-  console.log('hello world');
-  $scope.selected = function() {
-  }
-})
-
-.controller('YouTubeController', function($scope) {
-  console.log(`controller fb`)
-  $scope.title = `facebook`;
-  $scope.info = `1111111`;
-  console.log('hello world');
-  $scope.selected = function() {
-  }
-})
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -32,9 +15,14 @@ angular.module(`sozaicApp`, [`ui.router`])
       templateUrl: `/pages/youtube/youtube.html`,
       controller: `YouTubeController`
     })
+    .state(`igFeed`, {
+      url: `/feed/instagram`,
+      templateUrl: `/pages/instagram.html`,
+      controller: `IGController`
+    })
+    .state(`twitterFeed`, {
+      url: `/feed/twitter`,
+      templateUrl: `/pages/twitter.html`,
+      controller: `TwtrController`
+    })
 })
-
-.controller(`TwtrController`, function($scope) {
-  $scope.title = `twitter`;
-})
-;
