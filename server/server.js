@@ -5,6 +5,7 @@ const path = require(`path`);
 const passport = require('passport');
 const key = require('./apiKeys.js');
 const app = express();
+<<<<<<< 87472d0ef39ef2b205fa57aabc90bdbadbb18cbd
 
 app.use(express.static(`${__dirname}/../public/client`));
 

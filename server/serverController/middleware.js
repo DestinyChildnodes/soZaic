@@ -17,7 +17,7 @@ module.exports = function(app, express, passport, key) {
 
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
-  app.use(express.static(`${__dirname}/../../client`));
+  app.use(express.static(`${__dirname}/../../public/client`));
 
   //TODO: Need to add passport OAUTH
 
