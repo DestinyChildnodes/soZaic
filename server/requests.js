@@ -35,16 +35,18 @@ const client = {
 };
 
 module.exports =  {
-  twitterGET: () => {
+  twitterGET: (callback) => {
     const params = {screen_name: 'nodejs'};
     client.twitter.get('statuses/user_timeline', params, function(error, tweets, response) {
-      if (!error) {
-        console.log(tweets);
+      if (error) {
+        console.error(error);
+      } else {
+        callback(tweets);
       }
     });
   },
 
-  instagramGET: () => {
+  instagramGET: (callback) => {
 
   },
 
