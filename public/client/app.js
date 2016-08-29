@@ -59,7 +59,7 @@ angular.module(`sozaicApp`, [`ui.router`])
     console.log("inside factory")
     return $http({
       method: 'POST',
-      url: './pages/youtube/ytlogin.html'
+      url: 'api/oauth/login'
     })
   }
 

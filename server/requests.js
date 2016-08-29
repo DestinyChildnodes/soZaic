@@ -1,6 +1,8 @@
 const Twitter = require('twitter');
-const key = require('./apiKeys.js')
-const ig = require('instagram-node').instagram();
+const Youtube = require('youtube-api');
+const key = require('./apiKeys.js');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 
 const client = {
   twitter: new Twitter({
@@ -21,8 +23,14 @@ const client = {
 
   },
 
-  youtube: {
-
+  youtube: function() {
+    Youtube.authenticate({
+      type: "oauth",
+      refresh_token: "your refresh token",
+      client_id: "your client id",
+      client_secret: "your client secret",
+      redirect_url: "your refresh url"
+    });
   }
 };
 
@@ -45,6 +53,8 @@ module.exports =  {
   },
 
   youtubeGET: () => {
-
+    console.log("inside youtubeGET");
+    clients.youtube();
+    https://www.googleapis.com/youtube/v3/subscriptions
   }
 }

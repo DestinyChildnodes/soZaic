@@ -2,6 +2,9 @@ const bodyParser  = require('body-parser');
 
 module.exports = function(app, express) {
 
+  const oAuthYouTube = express.Router();
+  const youTube = express.router();
+
   const twitterRouter = express.Router();
 
   //TODO: need facebook, instagram, youtube
