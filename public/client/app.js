@@ -37,4 +37,41 @@ angular.module(`sozaicApp`, [`ui.router`])
 .controller(`TwtrController`, function($scope) {
   $scope.title = `twitter`;
 })
+
+.controller(`YouTubeController`, function($scope, Authorize){
+  $scope.data = {};
+  $scope.ytAuthor = function(user, pass){
+    console.log("inside controller")
+    Authorize.ytAuthorize(user, pass)
+    .then(function(data){
+      $scope.data = data;
+      console.log(data);
+    })
+  }
+  $scope.youTubeGet = function(){
+    
+    //'https://gdata.youtube.com/feeds/api/users/default/subscriptions?v=2'
+  };
+})
+
+.factory(`YTAuthorize`, function($http){
+  let ytAuthorize = function(user, pass){
+    console.log("inside factory")
+    return $http({
+      method: 'POST',
+      url: 'api/oauth/login'
+    })
+  }
+
+  return {
+    ytAuthorize : ytAuthorize
+  }
+})
+
+
+
+
+
+
+
 ;
