@@ -1,24 +1,7 @@
 `use strict`;
 
-angular.module(`sozaicApp`, [`ui.router`])
+angular.module(`sozaicApp`, [`sozaicApp.controller`,`sozaicApp.serviceFactories`, `ui.router`])
 
-.controller(`FbController`, function($scope) {
-  console.log(`controller fb`)
-  $scope.title = `facebook`;
-  $scope.info = `1111111`;
-  console.log('hello world');
-  $scope.selected = function() {
-  }
-})
-
-.controller('YouTubeController', function($scope) {
-  console.log(`controller fb`)
-  $scope.title = `facebook`;
-  $scope.info = `1111111`;
-  console.log('hello world');
-  $scope.selected = function() {
-  }
-})
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -32,46 +15,14 @@ angular.module(`sozaicApp`, [`ui.router`])
       templateUrl: `/pages/youtube/youtube.html`,
       controller: `YouTubeController`
     })
-})
-
-.controller(`TwtrController`, function($scope) {
-  $scope.title = `twitter`;
-})
-
-.controller(`YouTubeController`, function($scope, Authorize){
-  $scope.data = {};
-  $scope.ytAuthor = function(user, pass){
-    console.log("inside controller")
-    Authorize.ytAuthorize(user, pass)
-    .then(function(data){
-      $scope.data = data;
-      console.log(data);
+    .state(`igFeed`, {
+      url: `/feed/instagram`,
+      templateUrl: `/pages/instagram.html`,
+      controller: `IGController`
     })
-  }
-  $scope.youTubeGet = function(){
-    
-    //'https://gdata.youtube.com/feeds/api/users/default/subscriptions?v=2'
-  };
-})
-
-.factory(`YTAuthorize`, function($http){
-  let ytAuthorize = function(user, pass){
-    console.log("inside factory")
-    return $http({
-      method: 'POST',
-      url: 'api/oauth/login'
+    .state(`twitterFeed`, {
+      url: `/feed/twitter`,
+      templateUrl: `/pages/twitter.html`,
+      controller: `TwtrController`
     })
-  }
-
-  return {
-    ytAuthorize : ytAuthorize
-  }
 })
-
-
-
-
-
-
-
-;

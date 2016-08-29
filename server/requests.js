@@ -19,7 +19,7 @@ const client = {
     });
   },
 
-  facebook: {
+  facebook: () => {
 
   },
 
