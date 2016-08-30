@@ -1,6 +1,6 @@
 angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 
-.controller(`FbController`, ($scope, GetFeed) => {
+.controller(`FbController`, function ($scope, GetFeed) {
 
   $scope.title = `facebook`;
   $scope.info = `1111111`;
@@ -9,7 +9,7 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   }
 })
 
-.controller('YouTubeController', ($scope, GetFeed) => {
+.controller('YouTubeController', function($scope, GetFeed) {
 
   $scope.title = `facebook`;
   $scope.info = `1111111`;
@@ -18,7 +18,7 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   }
 })
 
-.controller(`IGController`, ($scope, GetFeed) => {
+.controller(`IGController`, function ($scope, GetFeed) {
 
 })
 .controller(`TwtrController`, function ($scope, GetFeed) {
