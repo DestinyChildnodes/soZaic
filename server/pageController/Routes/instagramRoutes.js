@@ -1,17 +1,6 @@
+"use strict";
+
 const utils = require(`../../serverController/utils.js`)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 passport.use(new GoogleStrategy({

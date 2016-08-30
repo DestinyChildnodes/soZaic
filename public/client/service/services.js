@@ -1,3 +1,5 @@
+"use strict";
+
 angular.module(`sozaicApp.serviceFactories`, [])
 
 .factory(`GetFeed`, ($http, $window) => {
