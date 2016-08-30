@@ -11,10 +11,7 @@ module.exports = (app, express, passport, key) => {
 
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(session({ secret: 'keyboard cat',
-  resave: true,
-  saveUninitialized: true,
-  cookie: { maxAge: 60000 }}));
+
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
   app.use(express.static(`${__dirname}/../../client`));

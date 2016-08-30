@@ -31,7 +31,7 @@ const client = {
 
 module.exports =  {
   twitterGET: (token, screen_name, callback) => {
-    var client = new Twitter({
+    let client = new Twitter({
       consumer_key: key.twitter.TWITTER_CONSUMER_KEY,
       consumer_secret: key.twitter.TWITTER_CONSUMER_SECRET,
       access_token_key: token.access_token_key,
