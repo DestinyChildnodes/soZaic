@@ -1,3 +1,5 @@
+"use strict";
+
 const apiRequest = require('../../server/requests.js');
 
 module.exports = {
