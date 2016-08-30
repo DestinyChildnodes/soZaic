@@ -7,6 +7,7 @@ const session = require('express-session');
 module.exports = (app, express, passport, key) => {
  const twitterRouter = express.Router();
  const youTubeRouter = express.Router();
+ const facebookRouter = express.Router();
  const routeHelper = option => `../pageController/Routes/${option}`;
 
  app.use(passport.initialize());
@@ -23,10 +24,10 @@ module.exports = (app, express, passport, key) => {
  app.use(`/api/youTube`, youTubeRouter);
  app.use(`/api/twitter`, twitterRouter);
  // app.use(`/api/instagram`, instagramRouter);
- // app.use(`/api/facebook`, facebookRouter);
+ app.use(`/api/facebook`, facebookRouter);
 
  require(routeHelper(`twitterRoutes`))(twitterRouter, passport, key);
  require(routeHelper(`youTubeRoutes`))(youTubeRouter, passport, key);
- // require(routeHelper(`facebookRoutes`))(youTubeRouter, passport, key);
+ require(routeHelper(`facebookRoutes`))(facebookRouter, passport, key);
  // require(routeHelper(`instagramRoutes`))(youTubeRouter, passport, key);
 }

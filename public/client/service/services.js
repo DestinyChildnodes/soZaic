@@ -11,9 +11,15 @@ angular.module(`sozaicApp.serviceFactories`, [])
     })
   };
   let authTwitter = () => {
+    console.log(`inside twitter factory`);
     //http://localhost:8080/api/twitter/auth/
     $window.location.href = "http://" + $window.location.host + "/api/twitter/auth";
   };
+
+  let authFB = () => {
+    console.log(`inside authFB factory`);
+    $window.location.href = `http://${window.location.host}/api/facebook/auth`;
+  }
 
   let twitterFeed = () => {
     return $http({
@@ -25,9 +31,17 @@ angular.module(`sozaicApp.serviceFactories`, [])
     }).catch(err => {console.error(err)})
   };
 
+  let fbFeed = () => {
+    console.log(`inside FB factory`);
+    //TODO: make like twitterFeed, to get data back from data
+    //Do after auth user for FB
+  }
+
   return {
     ytFeed : ytFeed,
     authTwitter: authTwitter,
-    twitterFeed : twitterFeed
+    twitterFeed : twitterFeed,
+    fbFeed: fbFeed,
+    authFB: authFB
   }
 });
