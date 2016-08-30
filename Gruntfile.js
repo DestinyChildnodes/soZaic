@@ -91,7 +91,7 @@ module.exports = function(grunt) {
 //Grunt tasks
 //==========================================
 
-grunt.registerTask('server-dev', function (target) {
+grunt.registerTask('server', function (target) {
   var nodemon = grunt.util.spawn({
        cmd: 'grunt',
        grunt: true,
@@ -131,7 +131,7 @@ grunt.registerTask('upload', function() {
     // add your production server task here
     grunt.task.run(['shell:heroku']);
   } else {
-    grunt.task.run([ 'server-dev' ]);
+    grunt.task.run([ 'server' ]);
   }
 });
 
