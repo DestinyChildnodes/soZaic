@@ -1,3 +1,5 @@
+"use strict";
+
 const Twitter = require('twitter');
 // const Youtube = require('youtube-api');
 const key = require('./apiKeys.js');

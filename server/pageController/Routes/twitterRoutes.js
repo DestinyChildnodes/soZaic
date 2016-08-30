@@ -1,3 +1,5 @@
+"use strict";
+
 const twitterController = require('../routesController.js');
 const TwitterStrategy = require('passport-twitter').Strategy;
 const utils = require(`../../serverController/utils.js`);
@@ -30,7 +32,7 @@ module.exports = (appRoute, passport, key) => {
   utils.routeFeed(appRoute, (req, res) => {
     console.log("inside get Feed")
     if (userTokens.token === undefined) {
-      res.send("Need to login", 404)
+      res.status(status).send(body);
     } else {
       twitterController.twitterData(req, res, userTokens.username, userTokens.token);
     }

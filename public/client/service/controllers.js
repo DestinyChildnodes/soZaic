@@ -21,7 +21,7 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 .controller(`IGController`, ($scope, GetFeed) => {
 
 })
-.controller(`TwtrController`, ($scope, GetFeed) => {
+.controller(`TwtrController`, function ($scope, GetFeed) {
   $scope.title = `twitter`;
   $scope.tweets = [];
   $scope.authTwitter = () => GetFeed.authTwitter()
