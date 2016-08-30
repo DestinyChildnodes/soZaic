@@ -1,3 +1,5 @@
+"use strict";
+
 angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 
 .controller(`FbController`, function ($scope, GetFeed) {

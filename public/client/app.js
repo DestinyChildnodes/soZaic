@@ -1,4 +1,4 @@
-`use strict`;
+"use strict";
 
 angular.module(`sozaicApp`, [`sozaicApp.controller`,`sozaicApp.serviceFactories`, `ui.router`])
 .config(($stateProvider, $urlRouterProvider) => {

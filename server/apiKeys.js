@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = {
 
   twitter: {
@@ -15,7 +17,7 @@ module.exports = {
   facebook: {
     clientID : `665947800248819`,
     cliendSecret: `6198dbb101dc82aa2f66154eb50dc84a`,
-    callbackURL: `http://localhost:8080/auth/facebook/callback` 
+    callbackURL: `http://localhost:8080/auth/facebook/callback`
   },
 
   youtube: {

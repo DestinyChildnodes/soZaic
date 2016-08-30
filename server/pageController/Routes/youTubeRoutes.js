@@ -1,3 +1,5 @@
+"use strict";
+
 const youTube = require('../routesController.js');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const utils = require(`../../serverController/utils.js`)

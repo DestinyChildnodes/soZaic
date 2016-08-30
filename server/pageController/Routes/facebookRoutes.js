@@ -1,3 +1,5 @@
+"use strict";
+
 const fbController = require('./facebookController.js');
 const TwitterStrategy = require('passport-facebook').Strategy
 
