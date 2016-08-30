@@ -9,6 +9,13 @@ angular.module(`sozaicApp.serviceFactories`, [])
     })
   };
   let authTwitter = function(callback){
+    // return $http({
+    //   method: `GET`,
+    //   url: `api/twitter/auth`
+    // }).then((response) => {
+    //   console.log("inside twitterFeed")
+    //   return response;
+    // })
     $window.location.href = "http://" + $window.location.host + "/api/twitter/auth";
     callback();
   };
