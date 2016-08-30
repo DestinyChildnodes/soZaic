@@ -7,7 +7,7 @@ module.exports = {
     apiRequest.twitterGET(token, screen_name, (tweets) => {
       // console.log("inside twitterGEt")s
       var texts = []
-      for (let el of tweets) {
+      for (const el of tweets) {
         texts.push(el.text)
       }
       res.send(texts);

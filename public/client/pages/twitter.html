@@ -3,8 +3,9 @@
   <span ng-click="authTwitter()">
     login
   </span>
-
-  <ul ng-repeat="tweet in tweets">
-    <li>{{tweet}}</li>
+  <div class="postFeed">
+  <ul class="feedList" ng-repeat="tweet in tweets">
+    <li>{{ tweet }}</li>
   </ul>
+  </div>
 </span>

@@ -1,5 +1,4 @@
 "use strict";
-
 const Twitter = require('twitter');
 // const Youtube = require('youtube-api');
 const key = require('./apiKeys.js');
@@ -32,7 +31,7 @@ const client = {
 
 module.exports =  {
   twitterGET: (token, screen_name, callback) => {
-    let client = new Twitter({
+    var client = new Twitter({
       consumer_key: key.twitter.TWITTER_CONSUMER_KEY,
       consumer_secret: key.twitter.TWITTER_CONSUMER_SECRET,
       access_token_key: token.access_token_key,
