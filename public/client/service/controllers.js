@@ -23,9 +23,14 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 })
 .controller(`TwtrController`, function($scope, GetFeed) {
   $scope.title = `twitter`;
-  $scope.getFeed = function() {
-    GetFeed.authTwitter(function() {
-      console.log("Successful");
+  $scope.tweets = [];
+  $scope.authTwitter = function() {
+    GetFeed.authTwitter();
+  }
+  $scope.twitterFeed = function() {
+    GetFeed.twitterFeed().then(function(response) {
+      console.log(response)
+      $scope.tweets = response.data;
     });
   }
 

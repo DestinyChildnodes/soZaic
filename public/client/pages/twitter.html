@@ -1,4 +1,10 @@
-<span ng-click="getFeed()">
-  <a href="/#/feed/twitter" >twitter</a>
+<span ng-init="twitterFeed()">
 
+  <span ng-click="authTwitter()">
+    login
+  </span>
+
+  <ul ng-repeat="tweet in tweets">
+    <li>{{tweet}}</li>
+  </ul>
 </span>

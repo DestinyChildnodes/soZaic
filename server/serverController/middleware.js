@@ -23,5 +23,7 @@ module.exports = function(app, express, passport, key) {
 
 
   app.use(`/api/twitter`, twitterRouter);
+
+
   require(`../pageController/Twitter/twitterRoutes`)(twitterRouter, passport, key);
 }
