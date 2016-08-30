@@ -1,4 +1,4 @@
-const twitterController = require('./twitterController.js');
+const twitterController = require('../routesController.js');
 const TwitterStrategy = require('passport-twitter').Strategy
 const utils = require(`../../serverController/utils.js`)
 let userTokens = {} /*temporary db to store user token*/
@@ -22,7 +22,7 @@ module.exports = function(appRoute, passport, key) {
     }
   ));
 
-  utils.passportHelper(passport)
+  utils.passportHelper(passport);
   appRoute.route('/auth').get(passport.authenticate('twitter'));
 
   appRoute.route('/auth/callback').get(
@@ -38,7 +38,7 @@ module.exports = function(appRoute, passport, key) {
     if (userTokens.token === undefined) {
       res.send("Need to login", 404)
     } else {
-      twitterController.getData(req, res, userTokens.username, userTokens.token);
+      twitterController.twitterData(req, res, userTokens.username, userTokens.token);
     }
   })
 

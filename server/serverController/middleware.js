@@ -1,5 +1,4 @@
 const bodyParser  = require('body-parser');
-
 const session = require('express-session');
 
 
@@ -25,5 +24,5 @@ module.exports = function(app, express, passport, key) {
   app.use(`/api/twitter`, twitterRouter);
 
 
-  require(`../pageController/Twitter/twitterRoutes`)(twitterRouter, passport, key);
+  require(`../pageController/Routes/twitterRoutes`)(twitterRouter, passport, key);
 }

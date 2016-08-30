@@ -1,9 +1,7 @@
-//TODO: Need to add twitter api
-var apiRequest = require('../../requests.js');
+const apiRequest = require('../../server/requests.js');
 
 module.exports = {
-  getData: (req, res, screen_name, token) => {
-
+  twitterData: (req, res, screen_name, token) => {
     apiRequest.twitterGET(token, screen_name, (tweets) => {
       // console.log("inside twitterGEt")s
       var texts = []
