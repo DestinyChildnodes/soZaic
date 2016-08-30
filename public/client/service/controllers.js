@@ -31,7 +31,9 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
     GetFeed.twitterFeed().then(function(response) {
       console.log(response)
       $scope.tweets = response.data;
-    });
+    }).catch(function(err) {
+      console.error(err);
+    })
   }
 
 })

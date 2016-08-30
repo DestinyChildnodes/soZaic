@@ -8,29 +8,19 @@ angular.module(`sozaicApp.serviceFactories`, [])
       url: 'api/youtube'
     })
   };
-  let authTwitter = function(){
-    //  $http({
-    //   method: `GET`,
-    //   url: `api/twitter/auth`
-    // }).then((response) => {
-    //   console.log("inside twitterFeed")
-    //   return response;
-    // })
-    $window.location.href = "http://" + $window.location.host + "/api/twitter/auth";
-
+  let authTwitter = () => {
     //http://localhost:8080/api/twitter/auth/
-    // callback();
+    $window.location.href = "http://" + $window.location.host + "/api/twitter/auth";
   };
 
-  let twitterFeed = function(){
+  let twitterFeed = () => {
     return $http({
       method: 'GET',
       url: 'api/twitter/feed'
     }).then((response) => {
-      console.log("inside twitterFeed")
       console.log(response);
       return response;
-    })
+    }).catch(err => {console.error(err)})
   };
 
   return {
