@@ -38,7 +38,7 @@ module.exports =  {
     })
 
     const params = {screen_name: screen_name};
-    client.get('statuses/user_timeline', params, function(error, tweets, response) {
+    client.get('statuses/user_timeline', params, (error, tweets, response) => {
       if (error) {
         console.error(error);
       } else {

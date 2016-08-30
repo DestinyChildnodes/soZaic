@@ -1,7 +1,7 @@
 angular.module(`sozaicApp.serviceFactories`, [])
 
-.factory(`GetFeed`, function($http, $window){
-  let ytFeed = function(){
+.factory(`GetFeed`, ($http, $window) => {
+  let ytFeed = () => {
     console.log("inside factory")
     return $http({
       method: 'GET',

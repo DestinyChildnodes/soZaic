@@ -3,14 +3,14 @@ const TwitterStrategy = require('passport-twitter').Strategy;
 const utils = require(`../../serverController/utils.js`);
 let userTokens = {} /*temporary db to store user token*/
 
-module.exports = function(appRoute, passport, key) {
+module.exports = (appRoute, passport, key) => {
   passport.use(new TwitterStrategy({
       consumerKey: key.twitter.TWITTER_CONSUMER_KEY,
       consumerSecret: key.twitter.TWITTER_CONSUMER_SECRET,
       callbackURL: utils.callbackURL('twitter')
     },
 
-    function(token, tokenSecret, profile, cb) {
+    (token, tokenSecret, profile, cb) => {
       let userToken = {
         username: profile.username,
         token: {
@@ -22,12 +22,12 @@ module.exports = function(appRoute, passport, key) {
     }
   ));
 
-  utils.passportHelper(appRoute, passport, 'twitter', function(req, res) {
+  utils.passportHelper(appRoute, passport, 'twitter', (req, res) => {
     userTokens = req.user
     res.redirect('/#/feed/twitter');
   });
 
-  utils.routeFeed(appRoute, function(req, res) {
+  utils.routeFeed(appRoute, (req, res) => {
     console.log("inside get Feed")
     if (userTokens.token === undefined) {
       res.send("Need to login", 404)
