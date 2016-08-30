@@ -17,6 +17,7 @@ module.exports = {
   },
 
   youtube: {
-
+    clientID: `290829801519-kqnlolspdlh1loth51uij5b1tjen4qhq.apps.googleusercontent.com`,
+    clientSecret: `WsrTqZd0mLe7bVFctzdQYK5Y`
   }
 }
