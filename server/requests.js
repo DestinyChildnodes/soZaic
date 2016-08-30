@@ -5,10 +5,6 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 
 const client = {
-  // twitter: new Twitter({
-  //   consumer_key: key.twitter.TWITTER_CONSUMER_KEY,
-  //   consumer_secret: key.twitter.TWITTER_CONSUMER_SECRET,
-  // }),
 
   instagram: () => {
     api.use({
@@ -33,9 +29,16 @@ const client = {
 };
 
 module.exports =  {
-  twitterGET: (screen_name, callback) => {
+  twitterGET: (token, screen_name, callback) => {
+    var client = new Twitter({
+      consumer_key: key.twitter.TWITTER_CONSUMER_KEY,
+      consumer_secret: key.twitter.TWITTER_CONSUMER_SECRET,
+      access_token_key: token.access_token_key,
+      access_token_secret: token.access_token_secret
+    })
+
     const params = {screen_name: screen_name};
-    client.twitter.get('statuses/user_timeline', params, function(error, tweets, response) {
+    client.get('statuses/user_timeline', params, function(error, tweets, response) {
       if (error) {
         console.error(error);
       } else {

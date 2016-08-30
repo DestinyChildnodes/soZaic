@@ -1,4 +1,5 @@
 angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
+
 .controller(`FbController`, function($scope, GetFeed) {
   console.log(`controller fb`)
   $scope.title = `facebook`;
