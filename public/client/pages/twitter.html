@@ -1,7 +1,7 @@
 <span ng-init="twitterFeed()">
 
-  <span ng-click="authTwitter()">
-    login
+  <span ng-show="logShow" ng-click="authTwitter()">
+    <img src="../../style/twitlogin.png" width=150px height="auto">
   </span>
   <div class="postFeed">
   <ul class="feedList" ng-repeat="tweet in tweets">
