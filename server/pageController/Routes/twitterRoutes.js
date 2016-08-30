@@ -10,18 +10,18 @@ module.exports = (appRoute, passport, key) => {
       consumerKey: key.twitter.TWITTER_CONSUMER_KEY,
       consumerSecret: key.twitter.TWITTER_CONSUMER_SECRET,
       callbackURL: utils.callbackURL('twitter')
-    },
+  },
 
-    (token, tokenSecret, profile, cb) => {
-      let userToken = {
-        username: profile.username,
-        token: {
-          access_token_key: token,
-          access_token_secret: tokenSecret
-        }
+  (token, tokenSecret, profile, cb) => {
+    let userToken = {
+      username: profile.username,
+      token: {
+        access_token_key: token,
+        access_token_secret: tokenSecret
       }
-      cb(null, userToken);
     }
+    cb(null, userToken);
+  }
   ));
 
   utils.passportHelper(appRoute, passport, 'twitter', (req, res) => {

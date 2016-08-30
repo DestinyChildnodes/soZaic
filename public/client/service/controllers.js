@@ -7,7 +7,12 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   $scope.title = `facebook`;
   $scope.info = `1111111`;
   console.log('hello world');
-  $scope.selected = function() {
+  $scope.authFB = () => GetFeed.authFB();
+  $scope.fbFeed = () => {
+    GetFeed.fbFeed().then(function(resp) {
+      console.log(resp);
+      //TODO: make like TwtrController, to handle data coming in
+    })
   }
 })
 
@@ -29,7 +34,7 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   $scope.authTwitter = () => GetFeed.authTwitter()
   $scope.twitterFeed = () => {
     GetFeed.twitterFeed().then(function(response) {
-      console.log(response)
+      console.log(response);
       $scope.tweets = response.data;
     }).catch(err => console.error(err));
   }
