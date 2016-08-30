@@ -1,0 +1,69 @@
+@font-face {
+	font-family: Sandoval;
+	src: url(sandoval.ttf);
+}
+
+body {
+	background-color: #fefbf7;
+}
+
+/*    *****NAVIGATION*****      */
+
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    background-color: #92DCE5;
+    font-family: sans-serif;
+}
+
+ul.tab li {
+	float: left;
+}
+
+ul.tab li a {
+    display: inline-block;
+    color: #2B303A;
+    font-style: bold;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 30px;
+}
+
+ul.tab li a:hover {
+	background-color: #fefbf7;
+}
+
+ul.tab li a:focus, .active {
+	background-color: #5bc9d7;
+}
+
+h1 {
+  text-align: left;
+  font-family: Sandoval;
+  font-size: 70px;
+  padding-top: 20px;
+  padding-left: 20px;
+  color: #D64933;
+}
+
+.appView {
+	background-color: #92DCE5;
+	color: #2B303A;
+}
+
+
+.feedList {
+	list-style-type: none;
+	border: solid 5px #A5A299;
+	padding: 5px;
+	display: inline-block;
+}
+
+
+
+

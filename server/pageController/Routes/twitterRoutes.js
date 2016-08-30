@@ -3,7 +3,7 @@
 const twitterController = require('../routesController.js');
 const TwitterStrategy = require('passport-twitter').Strategy;
 const utils = require(`../../serverController/utils.js`);
-let userTokens = {} /*temporary db to store user token*/
+let userTokens = {}; /*temporary db to store user token*/
 
 module.exports = (appRoute, passport, key) => {
   passport.use(new TwitterStrategy({
