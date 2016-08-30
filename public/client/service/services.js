@@ -3,13 +3,6 @@
 angular.module(`sozaicApp.serviceFactories`, [])
 
 .factory(`GetFeed`, ($http, $window) => {
-  let ytFeed = () => {
-    console.log("inside factory")
-    return $http({
-      method: 'GET',
-      url: 'api/youtube'
-    })
-  };
   let authTwitter = () => {
     console.log(`inside twitter factory`);
     //http://localhost:8080/api/twitter/auth/
@@ -35,13 +28,26 @@ angular.module(`sozaicApp.serviceFactories`, [])
     console.log(`inside FB factory`);
     //TODO: make like twitterFeed, to get data back from data
     //Do after auth user for FB
+  };
+  let authYouTube = () => {
+    $window.location.href = "http://" + $window.location.host + "/api/youTube/auth";
+  }
+  let youTubeFeed = () => {
+    return $http({
+      method: 'GET',
+      url: 'api/youTube/feed'
+    }).then((response) => {
+      console.log("inside factory ytfeed", response);
+      return response
+    });
   }
 
   return {
-    ytFeed : ytFeed,
     authTwitter: authTwitter,
-    twitterFeed : twitterFeed,
     fbFeed: fbFeed,
-    authFB: authFB
+    authFB: authFB,
+    authYouTube : authYouTube,
+    youTubeFeed : youTubeFeed,
+    twitterFeed : twitterFeed
   }
 });
