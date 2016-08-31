@@ -12,7 +12,9 @@ module.exports = function(appRoute, passport, key) {
     callbackURL: `http://local.host:8080/api/facebook/auth/callback`
   },
     (accessToken, refreshToken, profile, cb) => {
-      cb(null, `blahblahblah`);
+      console.log(`before cb()`);
+      console.log(profile);
+      cb(null, true);
     }
   ));
 
@@ -20,9 +22,10 @@ module.exports = function(appRoute, passport, key) {
     passport.authenticate(`facebook`)
   );
 
-  appRoute.get(`auth/callback`,
-    passport.authenticate(`facebook`, { failureRedirect: `/login` }),
+  appRoute.get(`/auth/callback`,
+    passport.authenticate(`facebook`, { failureRedirect: `/logindfgbr` }),
     function(req, res) {
+      console.log(`should redirect...`);
       res.redirect(`/`);
     }
   )
