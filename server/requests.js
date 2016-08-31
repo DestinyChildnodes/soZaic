@@ -66,10 +66,16 @@ module.exports =  {
     // })
   },
 
-  youtubeGET: () => {
-    request.get('https://www.googleapis.com/youtube/v3/subscriptions')
-    .on('response', function(res){
-      console.log(res);
+  youtubeGET: (token, callback) => {
+    // https://www.googleapis.com/youtube/v3/channels?part=id&mine=true&access_token=ACCESS_TOKEN
+    let url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&mine=true&access_token=${token}`
+;
+    request.get(url, function(err, res, body) {
+      console.log("ES666", `${token}`)
+      callback(body);
     })
+    // .on('response', function(res){
+    //   callback(res)
+    // })
   }
 }
