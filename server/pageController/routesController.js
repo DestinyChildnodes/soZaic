@@ -16,5 +16,8 @@ module.exports = {
   youTubeData: (req, res) => {
     apiRequest.youtubeGET();
     res.send("hello")
+  },
+  fbData: (req, res, id, token) => {
+    apiRequest.facebookGET(id,token);
   }
 }

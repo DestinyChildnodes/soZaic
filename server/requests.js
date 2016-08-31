@@ -1,4 +1,5 @@
 "use strict";
+
 const Twitter = require('twitter');
 // const Youtube = require('youtube-api');
 const key = require('./apiKeys.js');
@@ -53,8 +54,16 @@ module.exports =  {
 
   },
 
-  facebookGET: () => {
+  facebookGET: (id,token) => {
+    request.get(`https://graph.facebook.com/${id}/feed?access_token=${token}`, (err, res, body) => {
+      console.log(`bodybodybody`, body);
+      console.log(`resresres`, res);
+      console.log(`idididididid`, id);
 
+    })
+    // .on(`response`, (res) => {
+    //   console.log(res);
+    // })
   },
 
   youtubeGET: () => {

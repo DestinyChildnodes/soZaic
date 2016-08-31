@@ -26,9 +26,16 @@ angular.module(`sozaicApp.serviceFactories`, [])
 
   let fbFeed = () => {
     console.log(`inside FB factory`);
-    //TODO: make like twitterFeed, to get data back from data
-    //Do after auth user for FB
+    return $http({
+      method: `GET`,
+      url: `api/facebook/feed`
+    }).then(resp => {
+      console.log(resp);
+      return resp;
+    }).catch( err => console.error(err) )
+
   };
+
   let authYouTube = () => {
     $window.location.href = "http://" + $window.location.host + "/api/youTube/auth";
   }

@@ -1,7 +1,9 @@
 "use strict";
 
-// const fbController = require('../routesController');
+const fbController = require('../routesController');
 const FacebookStrategy = require(`passport-facebook`).Strategy;
+const utils = require(`../../serverController/utils`);
+let userTokens = {};
 
 module.exports = function(appRoute, passport, key) {
   console.log('Inside FB Routes');
@@ -14,13 +16,38 @@ module.exports = function(appRoute, passport, key) {
     (accessToken, refreshToken, profile, cb) => {
       console.log(`before cb()`);
       console.log(profile);
-      cb(null, true);
+      console.log(accessToken);
+      console.log(refreshToken);
+      userTokens.profile = profile;
+      userTokens.accessToken = accessToken;
+      cb(null, userTokens);
     }
   ));
+  //
+  // appRoute.get(`/auth`,
+  //   passport.authenticate(`facebook`)
+  // );
+  appRoute.get('/auth', passport.authenticate('facebook', { scope : ['user_friends', `public_profile`, `user_posts`, `user_likes`]}));
+  // utils.passportHelper(appRoute, passport, `facebook`, function(req, res) {
+  //   console.log(`should redirect...`);
+  //   console.log("frkejhgvlsdfhnlsdfsf", userTokens);
+  //   console.log(req.user);
+  //   // userTokens = req.user;
+  //   res.redirect(`/`);
+  // })
 
-  appRoute.get(`/auth`,
-    passport.authenticate(`facebook`)
-  );
+
+  utils.routeFeed(appRoute, (req, res) => {
+    console.log(`FB utils.routefeed`);
+    console.log(`userTokens`, userTokens);
+    if (userTokens.profile === undefined) {
+      console.log(`mayday mayday`);
+      res.status(404).send(`please login`);
+    } else {
+      console.log(`userToken.accessToken`, userTokens.accessToken);
+      fbController.fbData(req, res, userTokens.profile.id, userTokens.accessToken);
+    }
+  })
 
   appRoute.get(`/auth/callback`,
     passport.authenticate(`facebook`, { failureRedirect: `/logindfgbr` }),
