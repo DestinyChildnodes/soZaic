@@ -21,6 +21,8 @@ module.exports = {
     apiRequest.facebookGET(id,token);
   },
   instagramData: (req, res, token) => {
-    apiRequest.instagramGET(token);
+    apiRequest.instagramGET(token, (body) => {
+      res.send(body)
+    });
   }
 }

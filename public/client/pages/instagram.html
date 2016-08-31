@@ -2,4 +2,10 @@
 <span ng-show="photos.length === 0" ng-click="authInstagram()">
 <div id="view">Login</div>
 </span>
+<div  ng-repeat="photo in photos">
+	<div class="instafeed">
+	<img src="{{ photo.user.profile_picture }}" height="50" width="50">
+	<img src="{{ photo.images.standard_resolution.url }}" height="300" width="300">
+	</div>
+</div>
 </div>

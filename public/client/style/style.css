@@ -86,5 +86,9 @@ blockquote {
   max-width: 468px;
 }
 
+.instafeed {
+  display: inline-block;
+}
+
 
 

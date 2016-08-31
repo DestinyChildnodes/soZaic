@@ -35,8 +35,8 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   $scope.authInstagram = () => GetFeed.authInstagram();
   $scope.instagramFeed = () => {
     GetFeed.instagramFeed().then(function(response) {
-      //console.log(response)
-      $scope.photos = response;
+      console.log(response.data.data)
+      $scope.photos = response.data.data;
     })
   }
 })
