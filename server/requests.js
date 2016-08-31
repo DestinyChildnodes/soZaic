@@ -57,13 +57,18 @@ module.exports =  {
   facebookGET: (id,token) => {
     request.get(`https://graph.facebook.com/${id}/feed?access_token=${token}`, (err, res, body) => {
       console.log(`bodybodybody`, body);
-      console.log(`resresres`, res);
+      // console.log(`resresres`, res);
       console.log(`idididididid`, id);
-
+      console.log(typeof body);
+      const objBody = JSON.parse(body);
+      console.log(`objBody`, typeof objBody);
+      console.log(objBody);
+      // res.send(objBody);
     })
-    // .on(`response`, (res) => {
-    //   console.log(res);
-    // })
+    .on(`response`, (res) => {
+      console.log(res);
+      res.send(body);
+    })
   },
 
   youtubeGET: (token, callback) => {

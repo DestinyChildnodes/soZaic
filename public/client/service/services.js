@@ -30,9 +30,12 @@ angular.module(`sozaicApp.serviceFactories`, [])
       method: `GET`,
       url: `api/facebook/feed`
     }).then(resp => {
-      console.log(resp);
+      console.log(`FBFeed resp`, resp);
       return resp;
-    }).catch( err => console.error(err) )
+    }).catch( err => {
+      console.log(`factory FB Feed error`);
+      console.error(err)
+    })
 
   };
 
