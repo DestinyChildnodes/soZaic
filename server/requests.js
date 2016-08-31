@@ -58,7 +58,7 @@ module.exports =  {
     })
   },
 
-  facebookGET: (id,token) => {
+  facebookGET: (id,token, cb) => {
     request.get(`https://graph.facebook.com/${id}/feed?access_token=${token}`, (err, res, body) => {
       console.log(`bodybodybody`, body);
       // console.log(`resresres`, res);
@@ -68,11 +68,12 @@ module.exports =  {
       console.log(`objBody`, typeof objBody);
       console.log(objBody);
       // res.send(objBody);
+      cb(objBody.data);
     })
-    .on(`response`, (res) => {
-      console.log(res);
-      res.send(body);
-    })
+    // .on(`response`, (res) => {
+    //   console.log(res);
+    //   res.send(body);
+    // })
   },
 
   youtubeGET: (token, callback) => {
