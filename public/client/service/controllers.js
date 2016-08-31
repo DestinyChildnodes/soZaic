@@ -17,11 +17,14 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 })
 
 .controller('YouTubeController', function($scope, GetFeed) {
-
-  $scope.title = `facebook`;
-  $scope.info = `1111111`;
+  $scope.title = `youtube`;
+  $scope.videos = [];
   console.log('hello world');
-  $scope.selected = function() {
+  $scope.authYouTube = () => GetFeed.authYouTube();
+  $scope.youTubeFeed = function() {
+    GetFeed.youTubeFeed().then(function(response) {
+      console.log("inside youTubeFeed");
+    })
   }
 })
 

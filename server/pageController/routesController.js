@@ -8,9 +8,13 @@ module.exports = {
       // console.log("inside twitterGEt")s
       let texts = []
       for (let el of tweets) {
-        texts.push(el.text)
+        texts.push(el)
       }
       res.send(texts);
     });
+  },
+  youTubeData: (req, res) => {
+    apiRequest.youtubeGET();
+    res.send("hello")
   }
 }

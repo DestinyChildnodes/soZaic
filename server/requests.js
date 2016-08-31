@@ -4,6 +4,7 @@ const Twitter = require('twitter');
 const key = require('./apiKeys.js');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
+const request = require('request');
 
 const client = {
 
@@ -39,7 +40,7 @@ module.exports =  {
     })
 
     const params = {screen_name: screen_name};
-    client.get('statuses/user_timeline', params, (error, tweets, response) => {
+    client.get('statuses/home_timeline', params, (error, tweets, response) => {
       if (error) {
         console.error(error);
       } else {
@@ -56,9 +57,10 @@ module.exports =  {
 
   },
 
-//   youtubeGET: () => {
-//     console.log("inside youtubeGET");
-//     clients.youtube();
-//     // https://www.googleapis.com/youtube/v3/subscriptions
-//   }
+  youtubeGET: () => {
+    request.get('https://www.googleapis.com/youtube/v3/subscriptions')
+    .on('response', function(res){
+      console.log(res);
+    })
+  }
 }
