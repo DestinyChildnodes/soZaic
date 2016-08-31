@@ -10,8 +10,11 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   $scope.authFB = () => GetFeed.authFB();
   $scope.fbFeed = () => {
     GetFeed.fbFeed().then(function(resp) {
+      console.log(`FB Feed Controller`);
       console.log(resp);
       //TODO: make like TwtrController, to handle data coming in
+    }).catch(err =>{
+        console.error(err);
     })
   }
 })
