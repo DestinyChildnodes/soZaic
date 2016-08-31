@@ -19,5 +19,10 @@ module.exports = {
   },
   fbData: (req, res, id, token) => {
     apiRequest.facebookGET(id,token);
+  },
+  instagramData: (req, res, token) => {
+    apiRequest.instagramGET(token, (body) => {
+      res.send(body)
+    });
   }
 }
