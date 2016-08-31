@@ -53,7 +53,7 @@ module.exports = function(appRoute, passport, key) {
     passport.authenticate(`facebook`, { failureRedirect: `/logindfgbr` }),
     function(req, res) {
       console.log(`should redirect...`);
-      res.redirect(`/`);
+      res.redirect(`/#/feed/facebook`);
     }
   )
 };

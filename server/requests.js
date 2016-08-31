@@ -58,15 +58,25 @@ module.exports =  {
     })
   },
 
-  facebookGET: (id,token) => {
+  facebookGET: (id,token, cb) => {
     request.get(`https://graph.facebook.com/${id}/feed?access_token=${token}`, (err, res, body) => {
       console.log(`bodybodybody`, body);
-      console.log(`resresres`, res);
+      // console.log(`resresres`, res);
       console.log(`idididididid`, id);
-
+      console.log(typeof body);
+      const objBody = JSON.parse(body);
+      console.log(`objBody`, typeof objBody);
+      console.log(objBody);
+      // res.send(objBody);
+      /*Note: Must use cb since 'res' here represents response from FB,
+      while res from "routesController.js" represents res coming ultimately
+      from client side. The cb below uses the client "res", and its property
+      ".send" is used to send to client, inside services.js, fbFeed. */
+      cb(objBody.data);
     })
     // .on(`response`, (res) => {
     //   console.log(res);
+    //   res.send(body);
     // })
   },
 
