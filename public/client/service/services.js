@@ -49,12 +49,28 @@ angular.module(`sozaicApp.serviceFactories`, [])
     });
   }
 
+  let authInstagram = () => {
+    $window.location.href = "http://" + $window.location.host + "/api/instagram/auth";
+  }
+
+  let instagramFeed = () => {
+    return $http({
+      method: `GET`,
+      url: `api/instagram/feed`
+    }).then(res => {
+      console.log(res)
+      return res;
+    })
+  }
+
   return {
     authTwitter: authTwitter,
     fbFeed: fbFeed,
     authFB: authFB,
     authYouTube : authYouTube,
     youTubeFeed : youTubeFeed,
-    twitterFeed : twitterFeed
+    twitterFeed : twitterFeed,
+    authInstagram : authInstagram,
+    instagramFeed : instagramFeed
   }
 });

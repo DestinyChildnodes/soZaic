@@ -50,8 +50,12 @@ module.exports =  {
     });
   },
 
-  instagramGET: (callback) => {
-
+  instagramGET: (token, callback) => {
+    request.get(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${token}`, (err, res, body) => {
+        console.log(res);
+        console.log(body);
+        callback(body)
+    })
   },
 
   facebookGET: (id,token) => {

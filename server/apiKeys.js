@@ -10,8 +10,8 @@ module.exports = {
   },
 
   instagram: {
-    ClientID: `9ed7f5bdc0324a0fb1f4faf8a9fdf6d9`,
-    ClientSecret: `ef0e15c26fd2494d978b04421b333985`
+    ClientID: `d380635a2a114197aa18178023635d15`,
+    ClientSecret: `7b178f8ac8124497a5b127c988e6b4d8`
   },
 
   facebook: {

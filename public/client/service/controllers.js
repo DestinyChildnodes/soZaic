@@ -30,12 +30,21 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 })
 
 .controller(`IGController`, function ($scope, GetFeed) {
-
+  $scope.title = `Instagram`;
+  $scope.photos = [];
+  $scope.authInstagram = () => GetFeed.authInstagram();
+  $scope.instagramFeed = () => {
+    GetFeed.instagramFeed().then(function(response) {
+      //console.log(response)
+      $scope.photos = response;
+    })
+  }
 })
+
 .controller(`TwtrController`, function ($scope, GetFeed) {
   $scope.title = `twitter`;
   $scope.tweets = [];
-  $scope.authTwitter = () => GetFeed.authTwitter()
+  $scope.authTwitter = () => GetFeed.authTwitter();
   $scope.twitterFeed = () => {
     GetFeed.twitterFeed().then(function(response) {
       console.log(response);
