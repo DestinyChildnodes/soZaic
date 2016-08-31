@@ -12,20 +12,27 @@ module.exports = (appRoute, passport, key) => {
     passReqToCallback: true
   },
   function(request, accessToken, refreshToken, profile, cb) {
-    process.nextTick(function(){
-      return cb(null, profile)
-    })
+    // console.log('TOKEN', accessToken);
+    cb(null, accessToken)
   }));
-
+  let token = ""
   appRoute.get('/auth', passport.authenticate('google', { scope : [
     'https://www.googleapis.com/auth/youtube.readonly',
     'https://www.googleapis.com/auth/plus.login'
     ]}));
-  appRoute.get('/auth/callback', passport.authenticate('google', { failureRedirect: '/'}), 
+  appRoute.get('/auth/callback', passport.authenticate('google', { failureRedirect: '/'}),
     function(req, res){
+
+      token = req.user;
+      appRoute.get('/feed', function(req, res) {
+        console.log("this is token",token)
+        youTube.youTubeData(req, res, token);
+      })
       res.redirect('/#/feed/youtube')
   })
-  appRoute.get('/feed', function(req, res) {
-    youTube.youTubeData(req, res);
-  })
+
+
+
+
+
 }
