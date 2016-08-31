@@ -4,21 +4,20 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 
 .controller(`FbController`, function ($scope, GetFeed) {
   console.log('hello FB Controller');
-    $scope.posts = [];
-    $scope.authFB = () => GetFeed.authFB();
-    $scope.fbFeed = () => {
-      GetFeed.fbFeed().then(function(resp) {
-        console.log(`FB Feed Controller`);
-        console.log(resp);
-        if (resp) {
-          $scope.posts = resp.data;
-        }
-        //TODO: make like TwtrController, to handle data coming in
-      }).catch(err =>{
-          console.error(err);
-      })
-    }
-  })
+  $scope.posts = [];
+  $scope.authFB = () => GetFeed.authFB();
+  $scope.fbFeed = () => {
+    GetFeed.fbFeed().then(function(resp) {
+      console.log(`FB Feed Controller`);
+      console.log(resp);
+      if (resp) {
+        $scope.posts = resp.data;
+      }
+    }).catch(err =>{
+        console.error(err);
+    })
+  }
+})
 
 .controller('YouTubeController', function($scope, GetFeed) {
   $scope.title = `youtube`;
