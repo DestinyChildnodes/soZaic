@@ -26,11 +26,26 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   $scope.authYouTube = () => GetFeed.authYouTube();
   $scope.youTubeFeed = function() {
     GetFeed.youTubeFeed().then(function(response) {
-      $scope.videos = response.data.items;
+      let channels = response.data.items;
+      for (let video of channels) {
+        $scope.videos.push(video.id.videoId);
+      }
       console.log("This is controller", $scope.videos);
     })
   }
+  //
+  // $scope.getIframeSrc = function (videoId) {
+  //   return 'https://www.youtube.com/embed/' + videoId;
+  // };
 })
+
+ .filter('youtubeEmbedUrl', function ($sce) {
+    return function(videoId) {
+      return $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + videoId);
+    };
+  })
+
+
 
 .controller(`IGController`, function ($scope, GetFeed) {
   $scope.title = `Instagram`;
