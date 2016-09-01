@@ -1,35 +1,10 @@
 "use strict";
 
 const Twitter = require('twitter');
-// const Youtube = require('youtube-api');
 const key = require('./apiKeys.js');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 const request = require('request');
-
-const client = {
-
-  instagram: () => {
-    api.use({
-      client_id: key.instagram.ClientID,
-      client_secret: key.instagram.ClientSecret
-    });
-  },
-
-  facebook: () => {
-
-  },
-
-  // youtube: function() {
-  //   Youtube.authenticate({
-  //     type: "oauth",
-  //     refresh_token: "your refresh token",
-  //     client_id: "your client id",
-  //     client_secret: "your client secret",
-  //     redirect_url: "your refresh url"
-  //   });
-  // }
-};
 
 module.exports =  {
   twitterGET: (token, screen_name, callback) => {
@@ -52,44 +27,29 @@ module.exports =  {
 
   instagramGET: (token, callback) => {
     request.get(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${token}`, (err, res, body) => {
-        console.log(res);
-        console.log(body);
         callback(body)
     })
   },
 
-  facebookGET: (id,token, cb) => {
+  facebookGET: (id, token, cb) => {
     request.get(`https://graph.facebook.com/${id}/feed?access_token=${token}`, (err, res, body) => {
-      console.log(`bodybodybody`, body);
-      // console.log(`resresres`, res);
-      console.log(`idididididid`, id);
-      console.log(typeof body);
+
       const objBody = JSON.parse(body);
-      console.log(`objBody`, typeof objBody);
-      console.log(objBody);
-      // res.send(objBody);
+
       /*Note: Must use cb since 'res' here represents response from FB,
       while res from "routesController.js" represents res coming ultimately
       from client side. The cb below uses the client "res", and its property
       ".send" is used to send to client, inside services.js, fbFeed. */
       cb(objBody.data);
     })
-    // .on(`response`, (res) => {
-    //   console.log(res);
-    //   res.send(body);
-    // })
   },
 
   youtubeGET: (token, callback) => {
     // https://www.googleapis.com/youtube/v3/channels?part=id&mine=true&access_token=ACCESS_TOKEN
-    let url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&mine=true&access_token=${token}`
-;
+    let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelID=UCbB3BSFs0KtFlPzUg4omkBw&access_token=${token}`;
+
     request.get(url, function(err, res, body) {
-      console.log("ES666", `${token}`)
       callback(body);
     })
-    // .on('response', function(res){
-    //   callback(res)
-    // })
   }
 }
