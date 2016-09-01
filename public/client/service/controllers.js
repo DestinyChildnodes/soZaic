@@ -45,8 +45,6 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
     };
   })
 
-
-
 .controller(`IGController`, function ($scope, GetFeed) {
   $scope.title = `Instagram`;
   $scope.photos = [];
@@ -57,6 +55,12 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
       $scope.photos = response.data.data;
     })
   }
+})
+
+.filter('instagramEmbedUrl', function ($sce) {
+  return function(url) {
+    return $sce.trustAsResourceUrl(url + "embed");
+  };
 })
 
 .controller(`TwtrController`, function ($scope, GetFeed) {
