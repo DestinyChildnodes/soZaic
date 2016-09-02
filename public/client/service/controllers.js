@@ -26,11 +26,13 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   $scope.authYouTube = () => GetFeed.authYouTube();
   $scope.youTubeFeed = function() {
     GetFeed.youTubeFeed().then(function(response) {
+      console.log("testing response", response);
+
       let channels = response.data.items;
       for (let video of channels) {
         $scope.videos.push(video.id.videoId);
       }
-      console.log("This is controller", $scope.videos);
+      console.log($scope.videos);
     })
   }
   //
