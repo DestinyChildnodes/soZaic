@@ -27,7 +27,7 @@ module.exports = function(appRoute, passport, key) {
   // appRoute.get(`/auth`,
   //   passport.authenticate(`facebook`)
   // );
-  appRoute.get('/auth', passport.authenticate('facebook', { scope : ['user_friends', `public_profile`, `user_posts`, `user_likes`]}));
+  appRoute.get('/auth', passport.authenticate('facebook', { scope : ['user_friends', `user_photos`, `user_videos`, `public_profile`, `user_posts`, `user_likes`]}));
   // utils.passportHelper(appRoute, passport, `facebook`, function(req, res) {
   //   console.log(`should redirect...`);
   //   console.log("frkejhgvlsdfhnlsdfsf", userTokens);
