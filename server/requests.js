@@ -32,7 +32,14 @@ module.exports =  {
   },
 
   facebookGET: (id, token, cb) => {
-    request.get(`https://graph.facebook.com/v2.7/${id}?fields=posts.fields(status_type,picture,message,created_time,description,place,source,type)&access_token=${token}`,
+    request.get(`https://graph.facebook.com/v2.7/${id}?fields=posts.fields(status_type,picture,full_picture,message,created_time,description,place,source,type)&access_token=${token}`,
+    /*Working get URLs:
+    Preferred:
+    https://graph.facebook.com/v2.7/${id}/posts?fields(status_type,link,picture,message,created_time,description,place,source,type)&access_token=${token}
+
+    me?fields=posts.fields(status_type,picture,message,created_time,description,place,source,type)
+    https://graph.facebook.com/v2.7/10207067440152981_10207068465138605?access_token=${token}
+    */
     (err, res, body) => {
         if (err) () => console.log(err);
         console.log(`bodybodybody`, body);
@@ -45,6 +52,12 @@ module.exports =  {
         cb(objBody.posts.data);
     })
   },
+
+  // facebookSpGET: (id, token, type, cb) => {
+  //   if (type.yo === `added_photos`) {
+  //     request.get(`https://graph.facebook.com/v2.7/ )
+  //   }
+  // }
 
   youtubeGET: (token, callback) => {
     // https://www.googleapis.com/youtube/v3/channels?part=id&mine=true&access_token=ACCESS_TOKEN

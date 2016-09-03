@@ -28,6 +28,8 @@ angular.module(`sozaicApp.serviceFactories`, [])
     console.log(`inside FB factory`);
     return $http({
       method: `GET`,
+      data: `yodata`,
+      params: {"key": "yoparams"},
       url: `api/facebook/feed`
     }).then(resp => {
       console.log(`FBFeed resp`, resp);
@@ -36,7 +38,36 @@ angular.module(`sozaicApp.serviceFactories`, [])
       console.log(`factory FB Feed error`);
       console.error(err)
     })
+  };
 
+  // function fbSpAction () {
+  //   console.log(`inside FB factory`);
+  //   return $http({
+  //     method: `GET`,
+  //     data: `yodata`,
+  //     params: {"key": "yoparams"},
+  //     url: `api/facebook/feed`
+  //   }).then(resp => {
+  //     console.log(`FBFeed resp`, resp);
+  //     return resp;
+  //   }).catch( err => {
+  //     console.log(`factory FB Feed error`);
+  //     console.error(err)
+  //   })
+  // };
+
+  let fbSpAction = (dataObj) => {
+    return $http({
+      method: 'GET',
+      url: 'api/facebook/feed/specific',
+      params: dataObj
+    }).then((response) => {
+      console.log("inside factory fbSpec", response);
+      return response
+    }).catch( err => {
+      console.log(`factory FB SP Action`);
+      console.error(err)
+    })
   };
 
   let authYouTube = () => {
@@ -61,7 +92,6 @@ angular.module(`sozaicApp.serviceFactories`, [])
       method: `GET`,
       url: `api/instagram/feed`
     }).then(res => {
-      console.log(res)
       return res;
     })
   }
@@ -74,6 +104,7 @@ angular.module(`sozaicApp.serviceFactories`, [])
     youTubeFeed : youTubeFeed,
     twitterFeed : twitterFeed,
     authInstagram : authInstagram,
-    instagramFeed : instagramFeed
+    instagramFeed : instagramFeed,
+    fbSpAction
   }
 });
