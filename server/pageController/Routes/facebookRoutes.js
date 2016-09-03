@@ -8,6 +8,7 @@ let userTokens = {};
 module.exports = function(appRoute, passport, key) {
   console.log('Inside FB Routes');
 
+  //need following only for logging in:
   passport.use(new FacebookStrategy({
     clientID: key.facebook.clientID,
     clientSecret: key.facebook.clientSecret,
@@ -40,6 +41,8 @@ module.exports = function(appRoute, passport, key) {
   utils.routeFeed(appRoute, (req, res) => {
     console.log(`FB utils.routefeed`);
     console.log(`userTokens`, userTokens);
+    // console.log(`yoyoyoyo`, req.data);
+    // console.log(`yoyoyoyo`, req.params);
     if (userTokens.profile === undefined) {
       console.log(`mayday mayday`);
       res.status(404).send(`please login`);
@@ -49,14 +52,26 @@ module.exports = function(appRoute, passport, key) {
     }
   })
 
+  //following only for logging in:
   appRoute.get(`/auth/callback`,
     passport.authenticate(`facebook`, { failureRedirect: `/logindfgbr` }),
     function(req, res) {
+      // console.log(`yoyoyoyo`, req.data);
+      // console.log(`yoyoyoyo`, req.params);
       console.log(`should redirect...`);
       res.redirect(`/#/feed/facebook`);
     }
   )
+
+  appRoute.get(`/feed/specific`, (req, res) => {
+    console.log(req.query);
+    console.log(typeof fbController.fbSp);
+    fbController.fbSp(req, res, userTokens.profile.id,  userTokens.accessToken, req.query);
+  })
+
 };
+
+
 
 /*
 FB auth wouldn't allow to use localhost or 127.0.0.1.

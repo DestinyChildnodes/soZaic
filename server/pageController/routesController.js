@@ -47,6 +47,12 @@ module.exports = {
     })
   },
 
+  fbSp: (req, res, id, token, type) => {
+    apiRequest.facebookSpGET(id, token, type, (data) => {
+      res.send(data);
+    })
+  },
+
   instagramData: (req, res, token) => {
     apiRequest.instagramGET(token, (body) => {
       res.send(body)

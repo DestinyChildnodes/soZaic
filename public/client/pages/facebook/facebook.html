@@ -4,9 +4,13 @@
   </div>
   <ul ng-if="posts.length > 0" ng-repeat="post in posts">
     <img src="https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/13260129_10206443134745736_5750099962261197669_n.jpg?oh=22f626c227b2dbacecd26a035f5cae19&oe=5841C84D" />
-    <li><pre>
+    <!-- <img src="https://scontent.xx.fbcdn.net/v/t1.0-9/s720x720/13260129_10206443134745736_5750099962261197669_n.jpg?oh=c464ad09a60edbb16eec706fecc83d07&oe=58508A40" /> -->
+    <li><blockquote><pre>
       {{post.message}}
       {{post.created_time}}
-    </pre></li>
+      <button ng-click="specificAction({st_type: post.status_type, id: post.id})" class="action">
+        Action
+      </button>
+    </pre></blockquote></li>
   </ul>
 </div>
