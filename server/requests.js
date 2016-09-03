@@ -48,10 +48,22 @@ module.exports =  {
 
   youtubeGET: (token, callback) => {
     // https://www.googleapis.com/youtube/v3/channels?part=id&mine=true&access_token=ACCESS_TOKEN
-    let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelID=UCbB3BSFs0KtFlPzUg4omkBw&access_token=${token}`;
+    // https://www.googleapis.com/youtube/v3/search?part=snippet&channelID=UCbB3BSFs0KtFlPzUg4omkBw&access_token=${token}
+    let url = `https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&mine=true&access_token=${token}`;
 
     request.get(url, function(err, res, body) {
-      callback(body);
+      callback(body, token);
     })
+  },
+
+  youtTubeGetPlaylists: (token, channelId, callback) => {
+    let playlistData= [];
+
+    let url = `https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=${channelId}&access_token=${token}`;
+    request.get(url, function(err, res, body) {
+      let jsonData = JSON.parse(body);
+      callback(jsonData);
+    });
+
   }
 }
