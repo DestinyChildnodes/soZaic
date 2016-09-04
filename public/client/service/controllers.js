@@ -5,6 +5,7 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 .controller(`FbController`, function ($scope, GetFeed) {
   console.log('hello FB Controller');
   $scope.posts = [];
+  // $scope.profPic = ``;
   $scope.specificAction = (dataObj) => {
     console.log('spAc controller activated');
     // console.log(type);
@@ -26,7 +27,8 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
       console.log(`FB Feed Controller`);
       console.log(resp);
       if (resp) {
-        $scope.posts = resp.data;
+        $scope.posts = resp.data.postsData;
+        $scope.profPic = resp.data.profPic.url;
       }
     }).catch(err =>{
         console.error(err);

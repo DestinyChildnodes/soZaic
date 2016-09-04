@@ -9,6 +9,25 @@ body {
 
 /*    *****NAVIGATION*****      */
 
+#fb-Div {
+  position: absolute;
+  background-color: green;
+}
+
+.fb-prof {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+.fb-message {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+
+
 ul.tab {
     list-style-type: none;
     margin: 0;
@@ -86,9 +105,16 @@ blockquote {
   max-width: 468px;
 }
 
+.fb-block {
+  max-width: 80%;
+}
+
+.fb-name {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
 .instafeed {
   display: inline-block;
 }
-
-
-
