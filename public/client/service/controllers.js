@@ -43,17 +43,14 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 .controller('YouTubeController', function($scope, GetFeed) {
   $scope.title = `youtube`;
   $scope.videos = [];
-  console.log('hello world');
+
   $scope.authYouTube = () => GetFeed.authYouTube();
   $scope.youTubeFeed = function() {
     GetFeed.youTubeFeed().then(function(response) {
-      console.log("testing response", response);
-
       let channels = response.data.items;
       for (let video of channels) {
         $scope.videos.push(video.id.videoId);
       }
-      console.log($scope.videos);
     })
   }
   //
@@ -74,7 +71,6 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   $scope.authInstagram = () => GetFeed.authInstagram();
   $scope.instagramFeed = () => {
     GetFeed.instagramFeed().then(function(response) {
-      console.log(response.data.data)
       $scope.photos = response.data.data;
     })
   }
@@ -91,13 +87,9 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   $scope.tweets = [];
   $scope.authTwitter = () => GetFeed.authTwitter();
   $scope.twitterFeed = () => {
+
     GetFeed.twitterFeed().then(function(response) {
-      console.log(response);
       $scope.tweets = response.data;
-      console.log(`''''''''''''''''''''''''''''''''`);
-      console.log($scope.tweets[0]);
-      console.log(`''''''''''''''''''''''''''''''''`);
     }).catch(err => console.error(err));
   }
-
 })
