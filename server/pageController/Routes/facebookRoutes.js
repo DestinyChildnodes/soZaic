@@ -14,7 +14,7 @@ module.exports = function(appRoute, passport, key, localApiKeys) {
   if (key.twitter.TWITTER_CONSUMER_KEY && key.twitter.TWITTER_CONSUMER_SECRET) {
     callbackUrl = `https://sozaic.herokuapp.com/api/facebook/auth/callback`
   } else {
-    callbackUrl = utils.callbackURL('youTube')
+    callbackUrl = utils.callbackURL('facebook')
   }
 
   passport.use(new FacebookStrategy({
@@ -27,6 +27,7 @@ module.exports = function(appRoute, passport, key, localApiKeys) {
 
       userTokens.profile = profile;
       userTokens.accessToken = accessToken;
+
       cb(null, userTokens);
     }
   ));
@@ -44,10 +45,9 @@ module.exports = function(appRoute, passport, key, localApiKeys) {
 
   utils.routeFeed(appRoute, (req, res) => {
 
-    if (userTokens.profile === undefined) {
+    if (req.session.passport === undefined) {
       res.status(404).send(`please login`);
     } else {
-
       fbController.fbData(req, res, req.session.passport.user.profile.id, req.session.passport.user.accessToken);
     }
   })
