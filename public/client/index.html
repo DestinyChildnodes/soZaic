@@ -7,6 +7,10 @@
   </head>
   <body>
     <h1>soZaic</h1>
+    <!-- TODO:
+    Add in "Logged in as: First Last", or something. Are we retrieving at least user name from
+    each type of auth service?
+   -->
     <navigation class="nav">
     <ul class="tab">
       <li>
@@ -21,9 +25,9 @@
       <li>
         <a href="/#/feed/youtube">youtube</a>
       </li>
-      <li>
+      <!-- <li>
         <a href="/#/feed/tumblr"><strike>tumblr</strike></a>
-      </li>
+      </li> -->
       </ul>
     </navigation>
 
@@ -32,6 +36,7 @@
     <div class="views" ui-view></div>
   </body>
   <script src="./service/controllers.js"></script>
+  <script src="./service/fb-controllers.js"></script>
   <script src="./service/services.js"></script>
   <script src="./app.js"></script>
 </html>

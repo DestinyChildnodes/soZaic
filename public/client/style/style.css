@@ -9,6 +9,7 @@ body {
 
 /*    *****NAVIGATION*****      */
 
+
 ul.tab {
     list-style-type: none;
     margin: 0;
@@ -86,9 +87,52 @@ blockquote {
   max-width: 468px;
 }
 
+.fb-block {
+  position: relative;
+  max-width: 80%;
+  padding: 0 16px 40px 16px;
+  min-width: 300px;
+}
+
+.fb-prof {
+  position: relative;
+  top: 10px;
+  left: 0px;
+}
+
+.fb-name {
+  float: left;
+  position: absolute;
+  top: 12px;
+  left: 75px;
+  font-size: 15px;
+}
+
+.fb-time {
+  float: left;
+  top: 34px;
+  left: 75px;
+  position: absolute;
+  font-size: 13px;
+}
+
+.fb-fullPic {
+  position: relative;;
+  top: 20px;
+  max-width: 95%;
+}
+
+.fb-message {
+  position: relative;
+  top: 30px;
+  left: 25px;
+  max-width: 90%;
+}
+
+.fb-action {
+
+}
+
 .instafeed {
   display: inline-block;
 }
-
-
-

@@ -1,0 +1,31 @@
+<!-- TODO:
+Get Videos showing.
+Z Photo albums functionality.
+2. Integrate tagged posts, get more info for them.
+Y Change date format.
+1. Post reqs to FB from soZaic.
+Use additional get requests??
+ -->
+
+<div id="view" ng-init="fbFeed()">
+  <div ng-show="posts.length === 0" ng-click="authFB()">
+    <img src="../style/fbLogin.png" width=150px height="auto">
+  </div>
+  <div id=" fb-Div" ng-if="posts.length > 0" ng-repeat="post in posts">
+    <!-- <img src="https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/13260129_10206443134745736_5750099962261197669_n.jpg?oh=22f626c227b2dbacecd26a035f5cae19&oe=5841C84D" /> -->
+    <!-- <img src="https://scontent.xx.fbcdn.net/v/t1.0-9/s720x720/13260129_10206443134745736_5750099962261197669_n.jpg?oh=c464ad09a60edbb16eec706fecc83d07&oe=58508A40" /> -->
+    <div class="fb-li"><blockquote class="fb-block">
+      <img class="fb-prof" src={{profPic}} />
+      <span class="fb-name">{{post.from.name}} posted</span>
+      <span class="fb-time">{{post.created_time | date : "MM-dd-yyyy"}}</span>
+      <div>
+        <!-- <div class="fb-name">{{post.from.name}}</div> -->
+        <img class="fb-fullPic" src="{{post.full_picture}}"/>
+        <div class="fb-message">{{post.message}}</div>
+        <!-- <div class="fb-action"><button ng-click="specificAction({st_type: post.status_type, id: post.id})" class="action">
+          Action
+        </button></div> -->
+      </div>
+    </blockquote></div>
+  </div>
+</div>

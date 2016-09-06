@@ -1,11 +1,11 @@
 "use strict";
 
-angular.module(`sozaicApp`, [`sozaicApp.controller`,`sozaicApp.serviceFactories`, `ui.router`])
+angular.module(`sozaicApp`, [`sozaicApp.controller`,`sozaicApp.serviceFactories`, `sozaicApp.fbController`, `ui.router`])
 .config(($stateProvider, $urlRouterProvider) => {
   $stateProvider
     .state(`fbFeed`, {
       url: `/feed/facebook`,
-      templateUrl: `/pages/facebook/facebook.html`,
+      templateUrl: `/pages/facebook.html`,
       controller: `FbController`
     })
     .state(`youTubeFeed`, {
