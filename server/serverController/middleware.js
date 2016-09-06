@@ -11,12 +11,16 @@ module.exports = (app, express, passport, key) => {
  const instagramRouter = express.Router();
  const routeHelper = option => `../pageController/Routes/${option}`;
 
- app.use(passport.initialize());
- app.use(passport.session());
+
+
  app.use(session({ secret: 'keyboard cat',
    resave: true,
    saveUninitialized: true,
    cookie: { maxAge: 60000 }}));
+
+   app.use(passport.initialize());
+ app.use(passport.session());
+
  app.use(bodyParser.urlencoded({extended: true}));
  app.use(bodyParser.json());
  app.use(express.static(`${__dirname}/../../client`));
