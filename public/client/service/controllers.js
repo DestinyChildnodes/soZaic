@@ -43,15 +43,18 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 .controller('YouTubeController', function($scope, GetFeed) {
   $scope.title = `youtube`;
   $scope.videos = [];
-
   $scope.authYouTube = () => GetFeed.authYouTube();
   $scope.youTubeFeed = function() {
     GetFeed.youTubeFeed().then(function(response) {
-      let channels = response.data.items;
-      for (let video of channels) {
-        $scope.videos.push(video.id.videoId);
+      let channels = response.data;
+      // console.log(response.data)
+      for (let channel of channels) {
+        if (channel.items.length > 0) {
+          $scope.videos = $scope.videos.concat(channel.items);
+        }
       }
     })
+
   }
   //
   // $scope.getIframeSrc = function (videoId) {
@@ -60,8 +63,8 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 })
 
  .filter('youtubeEmbedUrl', function ($sce) {
-    return function(videoId) {
-      return $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + videoId);
+    return function(video) {
+      return $sce.trustAsResourceUrl('https://www.youtube.com/embed?listType=playlist&list=' + video.id);
     };
   })
 

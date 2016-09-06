@@ -72,6 +72,7 @@ angular.module(`sozaicApp.serviceFactories`, [])
       method: 'GET',
       url: 'api/youTube/feed'
     }).then((response) => {
+      // console.log(response)
       return response
     });
   }
