@@ -6,5 +6,3 @@ azure.err
 npm-debug.log
 
 public/dist
-
-server/serverController/apiKeys.js

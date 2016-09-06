@@ -3,7 +3,7 @@
 const express = require(`express`);
 const path = require(`path`);
 const passport = require('passport');
-const key = require('./apiKeys.js');
+const key = require('./serverController/apiKeys.js');
 const app = express();
 
 app.use(express.static(`${__dirname}/../public/client`));
