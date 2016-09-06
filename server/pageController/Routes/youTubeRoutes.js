@@ -14,8 +14,8 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
   }
 
   passport.use(new GoogleStrategy({
-      clientID: key.youtube.clientID ||  localApiKeys.youtube.clientID,
-      clientSecret: key.youtube.clientSecret ||  localApiKeys.youtube.clientSecret,
+      clientID: key.youtube.clientID ||  localApiKeys.youtube.youtubeClientID,
+      clientSecret: key.youtube.clientSecret ||  localApiKeys.youtube.youtubeClientSecret,
       callbackURL: callbackUrl,
       passReqToCallback: true
     },

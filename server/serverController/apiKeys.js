@@ -14,8 +14,7 @@ module.exports = {
 
   facebook: {
     clientID : process.env.fbClientId,
-    clientSecret: process.env.fbClientSecret,
-    callbackURL: `http://localhost:8080/auth/facebook/callback`
+    clientSecret: process.env.fbClientSecret
   },
 
   youtube: {
