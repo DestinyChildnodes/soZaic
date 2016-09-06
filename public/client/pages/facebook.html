@@ -6,7 +6,8 @@ Y Change date format.
 1. Post reqs to FB from soZaic.
 Use additional get requests??
  -->
-
+ <!DOCTYPE html>
+ <body>
 <div id="view" ng-init="fbFeed()">
   <div ng-show="posts.length === 0" ng-click="authFB()">
     <img src="../style/fbLogin.png" width=150px height="auto">
@@ -21,6 +22,14 @@ Use additional get requests??
       <div>
         <!-- <div class="fb-name">{{post.from.name}}</div> -->
         <img class="fb-fullPic" src="{{post.full_picture}}"/>
+        <div class="fb-fullPic" id="vidDiv" ng-if="post.source">
+          <video ng-src="{{ post.source | trustUrl }}" width="400" height="224" controls></video>
+        </div>
+        <!-- <script type="text/javascript">
+        console.log('hello')
+          console.log('scriptscript', document.getElementById("vidDiv").value);
+          document.getElementById("vidDiv").innerHTML =  "ksldfj";
+        </script> -->
         <div class="fb-message">{{post.message}}</div>
         <!-- <div class="fb-action"><button ng-click="specificAction({st_type: post.status_type, id: post.id})" class="action">
           Action
@@ -29,3 +38,4 @@ Use additional get requests??
     </blockquote></div>
   </div>
 </div>
+</body>
