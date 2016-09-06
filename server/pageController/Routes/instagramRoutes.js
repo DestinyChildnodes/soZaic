@@ -23,6 +23,7 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
   	if (userTokens.profile === undefined){
   		res.status(404).send(`please log in!`);
   	} else {
+			console.log(userTokens.accessToken,"sdasdasdasdasdasds");
   		instagramController.instagramData(req, res, userTokens.accessToken);
   	}
   })
