@@ -40,7 +40,7 @@ module.exports = (appRoute, passport, key) => {
   utils.routeFeed(appRoute, (req, res) => {
     console.log("inside get Feed");
     console.log(req.session)
-    if (req.session.passport.user === undefined) {
+    if (req.session.passport === undefined) {
       res.status(404).send("Need to log in");
     } else {
       twitterController.twitterData(req, res, req.session.passport.user.username, req.session.passport.user.token);
