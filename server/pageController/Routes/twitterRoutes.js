@@ -20,6 +20,7 @@ module.exports = (appRoute, passport, key) => {
         access_token_secret: tokenSecret
       }
     }
+
     cb(null, userToken);
   }
   ));

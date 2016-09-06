@@ -8,7 +8,7 @@ module.exports = (appRoute, passport, key) => {
   passport.use(new GoogleStrategy({
       clientID: key.youtube.clientID,
       clientSecret: key.youtube.clientSecret,
-      callbackURL: 'http://127.0.0.1:8080/api/youTube/auth/callback',
+      callbackURL: 'https://sozaic.herokuapp.com/api/youTube/auth/callback',
       passReqToCallback: true
     },
 

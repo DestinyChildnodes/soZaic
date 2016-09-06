@@ -25,8 +25,13 @@ module.exports = {
     callbackURL: `http://localhost:8080/auth/facebook/callback`
   },
 
+  // youtube: {
+  //   clientID: `301039466455-f2d3c1059na8fklsqbtnonne76gpahvr.apps.googleusercontent.com`,
+  //   clientSecret: `1OPtXki9LugZ89EA4Zi4naB3`
+  // }
+
   youtube: {
-    clientID: `301039466455-f2d3c1059na8fklsqbtnonne76gpahvr.apps.googleusercontent.com`,
-    clientSecret: `1OPtXki9LugZ89EA4Zi4naB3`
+    clientID: process.env.clientID,
+    clientSecret: process.env.clientSecret
   }
 }
