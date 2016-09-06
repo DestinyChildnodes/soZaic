@@ -1,7 +1,7 @@
 "use strict";
 
 const Twitter = require('twitter');
-const key = require('./apiKeys.js');
+const key = require('./severController/apiKeys.js');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 const request = require('request');
