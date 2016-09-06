@@ -9,7 +9,7 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
 	passport.use(new InstagramStrategy({
    	clientID: key.instagram.ClientID || localApiKeys.instagram.ClientID,
     clientSecret: key.instagram.ClientSecret || localApiKeys.instagram.ClientSecret,
-    callbackURL: `http://127.0.0.1:8080/api/instagram/auth/callback`
+    callbackURL: `http://local.host:8080/api/instagram/auth/callback`
   },
   	(accessToken, refreshToken, profile, cb) => {
   		userTokens.profile = profile;

@@ -11,7 +11,7 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
   if (key.twitter.TWITTER_CONSUMER_KEY && key.twitter.TWITTER_CONSUMER_SECRET) {
     callbackUrl = `https://sozaic.herokuapp.com/api/twitter/auth/callback`
   } else {
-    callbackUrl = utils.callbackURL('twitter')
+    callbackUrl = utils.callbackURL('twitter');
   }
 
 

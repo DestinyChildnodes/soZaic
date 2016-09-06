@@ -12,11 +12,11 @@ module.exports = {
    ClientSecret: `7b178f8ac8124497a5b127c988e6b4d8`
  },
 
- facebook: {
-   clientID : `665947800248819`,
-   clientSecret: `6198dbb101dc82aa2f66154eb50dc84a`,
-   callbackURL: `http://localhost:8080/auth/facebook/callback`
- },
+  facebook: {
+    clientID : `665947800248819`,
+    clientSecret: `6198dbb101dc82aa2f66154eb50dc84a`,
+  },
+
 
  youtube: {
    youtubeClientID: `301039466455-f2d3c1059na8fklsqbtnonne76gpahvr.apps.googleusercontent.com`,
