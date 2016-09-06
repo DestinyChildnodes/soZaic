@@ -2,6 +2,7 @@
 
 const Twitter = require('twitter');
 const key = require('./serverController/apiKeys.js');
+const localApiKeys = require('./serverController/localApiKeys.js');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 const request = require('request');
@@ -9,8 +10,8 @@ const request = require('request');
 module.exports =  {
   twitterGET: (token, screen_name, callback) => {
     let client = new Twitter({
-      consumer_key: key.twitter.TWITTER_CONSUMER_KEY,
-      consumer_secret: key.twitter.TWITTER_CONSUMER_SECRET,
+      consumer_key: key.twitter.TWITTER_CONSUMER_KEY || localApiKeys.twitter.TWITTER_CONSUMER_KEY,
+      consumer_secret: key.twitter.TWITTER_CONSUMER_SECRET || localApiKeys.twitter.TWITTER_CONSUMER_SECRET,
       access_token_key: token.access_token_key,
       access_token_secret: token.access_token_secret
     })

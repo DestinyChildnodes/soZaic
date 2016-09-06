@@ -5,11 +5,20 @@ const TwitterStrategy = require('passport-twitter').Strategy;
 const utils = require(`../../serverController/utils.js`);
 // let userTokens = {}; /*temporary db to store user token*/
 
-module.exports = (appRoute, passport, key) => {
+module.exports = (appRoute, passport, key, localApiKeys) => {
+
+  let callbackUrl = ""
+  if (key.twitter.TWITTER_CONSUMER_KEY && key.twitter.TWITTER_CONSUMER_SECRET) {
+    callbackUrl = `https://sozaic.herokuapp.com/api/twitter/auth/callback`
+  } else {
+    callbackUrl = utils.callbackURL('twitter')
+  }
+
+
   passport.use(new TwitterStrategy({
-      consumerKey: key.twitter.TWITTER_CONSUMER_KEY,
-      consumerSecret: key.twitter.TWITTER_CONSUMER_SECRET,
-      callbackURL: `https://sozaic.herokuapp.com/api/twitter/auth/callback`
+      consumerKey: key.twitter.TWITTER_CONSUMER_KEY || localApiKeys.twitter.TWITTER_CONSUMER_KEY,
+      consumerSecret: key.twitter.TWITTER_CONSUMER_SECRET || localApiKeys.twitter.TWITTER_CONSUMER_SECRET,
+      callbackURL: callbackUrl
       // callbackURL: utils.callbackURL('twitter')
   },
 

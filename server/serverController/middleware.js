@@ -4,7 +4,7 @@ const bodyParser  = require('body-parser');
 const session = require('express-session');
 
 
-module.exports = (app, express, passport, key) => {
+module.exports = (app, express, passport, key, localKeys) => {
  const twitterRouter = express.Router();
  const youTubeRouter = express.Router();
  const facebookRouter = express.Router();
@@ -31,8 +31,8 @@ module.exports = (app, express, passport, key) => {
  app.use(`/api/instagram`, instagramRouter);
  app.use(`/api/facebook`, facebookRouter);
 
- require(routeHelper(`twitterRoutes`))(twitterRouter, passport, key);
- require(routeHelper(`youTubeRoutes`))(youTubeRouter, passport, key);
- require(routeHelper(`facebookRoutes`))(facebookRouter, passport, key);
- require(routeHelper(`instagramRoutes`))(instagramRouter, passport, key);
+ require(routeHelper(`twitterRoutes`))(twitterRouter, passport, key, localKeys);
+ require(routeHelper(`youTubeRoutes`))(youTubeRouter, passport, key, localKeys);
+ require(routeHelper(`facebookRoutes`))(facebookRouter, passport, key, localKeys);
+ require(routeHelper(`instagramRoutes`))(instagramRouter, passport, key, localKeys);
 }

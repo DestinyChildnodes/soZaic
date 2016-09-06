@@ -5,10 +5,10 @@ const utils = require(`../../serverController/utils.js`)
 const InstagramStrategy = require(`passport-instagram`).Strategy;
 let userTokens = {};
 
-module.exports = (appRoute, passport, key) => {
+module.exports = (appRoute, passport, key, localApiKeys) => {
 	passport.use(new InstagramStrategy({
-   	clientID: key.instagram.ClientID,
-    clientSecret: key.instagram.ClientSecret,
+   	clientID: key.instagram.ClientID || localApiKeys.instagram.ClientID,
+    clientSecret: key.instagram.ClientSecret || localApiKeys.instagram.ClientSecret,
     callbackURL: `http://127.0.0.1:8080/api/instagram/auth/callback`
   },
   	(accessToken, refreshToken, profile, cb) => {
@@ -33,4 +33,3 @@ module.exports = (appRoute, passport, key) => {
    	res.redirect('/#/feed/instagram');
   });
 }
-

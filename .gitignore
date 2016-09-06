@@ -4,5 +4,5 @@ node_modules
 .LSOverride
 azure.err
 npm-debug.log
-
+serverController/localApiKeys.js
 public/dist

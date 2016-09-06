@@ -5,13 +5,13 @@ const FacebookStrategy = require(`passport-facebook`).Strategy;
 const utils = require(`../../serverController/utils`);
 let userTokens = {};
 
-module.exports = function(appRoute, passport, key) {
+module.exports = function(appRoute, passport, key, localApiKeys) {
   console.log('Inside FB Routes');
 
   //need following only for logging in:
   passport.use(new FacebookStrategy({
-    clientID: key.facebook.clientID,
-    clientSecret: key.facebook.clientSecret,
+    clientID: key.facebook.clientID || localApiKeys.facebook.clientID,
+    clientSecret: key.facebook.clientSecret || localApiKeys.facebook.clientSecret,
     callbackURL: `http://local.host:8080/api/facebook/auth/callback`
   },
     (accessToken, refreshToken, profile, cb) => {

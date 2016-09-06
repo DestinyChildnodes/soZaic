@@ -4,11 +4,19 @@ const youTube = require('../routesController.js');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const utils = require(`../../serverController/utils.js`);
 
-module.exports = (appRoute, passport, key) => {
+module.exports = (appRoute, passport, key, localApiKeys) => {
+
+  let callbackUrl = ""
+  if (key.twitter.TWITTER_CONSUMER_KEY && key.twitter.TWITTER_CONSUMER_SECRET) {
+    callbackUrl = `https://sozaic.herokuapp.com/api/youTube/auth/callback`
+  } else {
+    callbackUrl = utils.callbackURL('youTube')
+  }
+
   passport.use(new GoogleStrategy({
-      clientID: key.youtube.clientID,
-      clientSecret: key.youtube.clientSecret,
-      callbackURL: 'https://sozaic.herokuapp.com/api/youTube/auth/callback',
+      clientID: key.youtube.clientID ||  localApiKeys.youtube.clientID,
+      clientSecret: key.youtube.clientSecret ||  localApiKeys.youtube.clientSecret,
+      callbackURL: callbackUrl,
       passReqToCallback: true
     },
 
