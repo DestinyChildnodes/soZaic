@@ -7,15 +7,16 @@
     <!-- <img src="https://scontent.xx.fbcdn.net/v/t1.0-9/s720x720/13260129_10206443134745736_5750099962261197669_n.jpg?oh=c464ad09a60edbb16eec706fecc83d07&oe=58508A40" /> -->
     <div class="fb-li"><blockquote class="fb-block">
       <img class="fb-prof" src={{profPic}} />
-      <div class="fb-message">
-        <div class="fb-name">{{post.from.name}}</div>
-        {{post.message}}
-        {{post.created_time}}
-        {{post.full_picture}}
+      <span class="fb-name">{{post.from.name}} posted</span>
+      <span class="fb-time">{{post.created_time}}</span>
+      <div>
+        <!-- <div class="fb-name">{{post.from.name}}</div> -->
+        <img class="fb-fullPic" src="{{post.full_picture}}"/>
+        <div class="fb-message">{{post.message}}</div>
+        <!-- <div class="fb-action"><button ng-click="specificAction({st_type: post.status_type, id: post.id})" class="action">
+          Action
+        </button></div> -->
       </div>
-      <button ng-click="specificAction({st_type: post.status_type, id: post.id})" class="action">
-        Action
-      </button>
     </blockquote></div>
   </div>
 </div>
