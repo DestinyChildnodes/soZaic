@@ -3,16 +3,11 @@
 angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 
 .controller(`FbController`, function ($scope, GetFeed) {
-  console.log('hello FB Controller');
   $scope.posts = [];
   $scope.specificAction = (dataObj) => {
-    console.log('spAc controller activated');
-    // console.log(type);
-    console.log(GetFeed.fbSpAction);
-    console.log(GetFeed.fbFeed);
+
     GetFeed.fbSpAction(dataObj).then(function(resp) {
-      console.log(`FB spAct controllers `);
-      console.log(resp);
+
       if (resp) {
         console.log(resp);
       }
@@ -23,8 +18,7 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   $scope.authFB = () => GetFeed.authFB();
   $scope.fbFeed = () => {
     GetFeed.fbFeed().then(function(resp) {
-      console.log(`FB Feed Controller`);
-      console.log(resp);
+
       if (resp) {
         $scope.posts = resp.data;
       }
@@ -37,18 +31,20 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 .controller('YouTubeController', function($scope, GetFeed) {
   $scope.title = `youtube`;
   $scope.videos = [];
-  console.log('hello world');
   $scope.authYouTube = () => GetFeed.authYouTube();
   $scope.youTubeFeed = function() {
     GetFeed.youTubeFeed().then(function(response) {
-      console.log("testing response", response);
-
-      let channels = response.data.items;
-      for (let video of channels) {
-        $scope.videos.push(video.id.videoId);
+      let channels = response.data;
+      // console.log(response.data)
+      for (let channel of channels) {
+        if (channel.items.length > 0) {
+          $scope.videos = $scope.videos.concat(channel.items);
+        }
       }
+
       console.log($scope.videos);
     })
+
   }
   //
   // $scope.getIframeSrc = function (videoId) {
@@ -57,8 +53,8 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 })
 
  .filter('youtubeEmbedUrl', function ($sce) {
-    return function(videoId) {
-      return $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + videoId);
+    return function(video) {
+      return $sce.trustAsResourceUrl('https://www.youtube.com/embed?listType=playlist&list=' + video.id);
     };
   })
 
@@ -68,7 +64,6 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   $scope.authInstagram = () => GetFeed.authInstagram();
   $scope.instagramFeed = () => {
     GetFeed.instagramFeed().then(function(response) {
-      console.log(response.data.data)
       $scope.photos = response.data.data;
     })
   }
@@ -85,13 +80,9 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   $scope.tweets = [];
   $scope.authTwitter = () => GetFeed.authTwitter();
   $scope.twitterFeed = () => {
+
     GetFeed.twitterFeed().then(function(response) {
-      console.log(response);
       $scope.tweets = response.data;
-      console.log(`''''''''''''''''''''''''''''''''`);
-      console.log($scope.tweets[0]);
-      console.log(`''''''''''''''''''''''''''''''''`);
     }).catch(err => console.error(err));
   }
-
 })
