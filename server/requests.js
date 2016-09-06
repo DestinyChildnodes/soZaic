@@ -33,7 +33,7 @@ module.exports =  {
 
   facebookGET: (id, token, cb) => {
     const vidFields = `description,updated_time,id,embed_html,source,permalink_url`;
-    const postsFields = `status_type,picture,full_picture,message,created_time,description,place,source,type,from`;
+    const postsFields = `status_type,picture,full_picture,message,created_time,description,place,source,type,from{picture}`;
     request.get(`https://graph.facebook.com/v2.7/${id}?fields=feed.fields(${postsFields}),picture,tagged,videos{${vidFields}}&access_token=${token}`,
     //embed_html
     /*Working get URLs:
