@@ -9,8 +9,8 @@ module.exports = (appRoute, passport, key) => {
   passport.use(new TwitterStrategy({
       consumerKey: key.twitter.TWITTER_CONSUMER_KEY,
       consumerSecret: key.twitter.TWITTER_CONSUMER_SECRET,
-      // callbackURL: `https://sozaic.herokuapp.com/api/twitter/auth/callback`
-      callbackURL: utils.callbackURL('twitter')
+      callbackURL: `https://sozaic.herokuapp.com/api/twitter/auth/callback`
+      // callbackURL: utils.callbackURL('twitter')
   },
 
   (token, tokenSecret, profile, cb) => {
