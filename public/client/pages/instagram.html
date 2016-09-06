@@ -1,12 +1,10 @@
 <div ng-init="instagramFeed()">
-<span ng-show="photos.length === 0" ng-click="authInstagram()">
-<div id="view">Login</div>
-</span>
-<div  ng-repeat="photo in photos">
-	<div class="instafeed">
-	<iframe src="{{photo.link | instagramEmbedUrl}}" width="400" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-	<!-- <img src="{{ photo.user.profile_picture }}" height="50" width="50">
-	<img src="{{ photo.images.standard_resolution.url }}" height="300" width="300"> -->
-	</div>
-</div>
+	<span ng-show="photos.length === 0" ng-click="authInstagram()">
+		<div id="view">Login</div>
+	</span>
+	<span ng-repeat="photo in photos">
+		<span class="instafeed">
+			<iframe src="{{photo.link | instagramEmbedUrl}}" width="400" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+		</span>
+	</span>
 </div>
