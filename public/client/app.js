@@ -23,4 +23,9 @@ angular.module(`sozaicApp`, [`sozaicApp.controller`,`sozaicApp.serviceFactories`
       templateUrl: `/pages/twitter.html`,
       controller: `TwtrController`
     })
+    .state(`mixedFeed`, {
+      url: `/feed/mixed`,
+      templateUrl: `/pages/mixed.html`,
+      controller: `MixedController`
+    })
 })

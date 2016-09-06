@@ -61,6 +61,8 @@ angular.module(`sozaicApp.fbController`, [`sozaicApp.serviceFactories`, `ngSanit
         new Date('2016-08-31T03:01:32+0000').getTime()
         */
         $scope.posts = resp.data.postsData;
+        GetFeed.mixedArray =GetFeed.mixedArray.concat($scope.posts);
+
       }
     }).catch(err =>{
         console.error(err);

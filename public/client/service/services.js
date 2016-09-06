@@ -4,6 +4,7 @@
 angular.module(`sozaicApp.serviceFactories`, [])
 
 .factory(`GetFeed`, ($http, $window) => {
+  let mixedArray = [];
   let authTwitter = () => {
     //http://localhost:8080/api/twitter/auth/
     $window.location.href = "http://" + $window.location.host + "/api/twitter/auth";
@@ -99,6 +100,7 @@ angular.module(`sozaicApp.serviceFactories`, [])
     twitterFeed : twitterFeed,
     authInstagram : authInstagram,
     instagramFeed : instagramFeed,
-    fbSpAction
+    fbSpAction : fbSpAction,
+    mixedArray: mixedArray
   }
 });

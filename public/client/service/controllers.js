@@ -13,8 +13,10 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
       for (let channel of channels) {
         if (channel.items.length > 0) {
           $scope.videos = $scope.videos.concat(channel.items);
+          console.log($scope.videos,"sdasdasd");
         }
       }
+      GetFeed.mixedArray = GetFeed.mixedArray.concat($scope.videos);
     })
 
   }
@@ -37,6 +39,7 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   $scope.instagramFeed = () => {
     GetFeed.instagramFeed().then(function(response) {
       $scope.photos = response.data.data;
+      GetFeed.mixedArray = GetFeed.mixedArray.concat($scope.photos);
     })
   }
 })
@@ -55,6 +58,24 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 
     GetFeed.twitterFeed().then(function(response) {
       $scope.tweets = response.data;
+      GetFeed.mixedArray = GetFeed.mixedArray.concat($scope.tweets);
     }).catch(err => console.error(err));
+  }
+})
+
+.controller(`MixedController`, function($scope, GetFeed){
+  $scope.content = [];
+  $scope.loadContent = () => {
+    $scope.content = GetFeed.mixedArray;
+    console.log("MixedController",$scope.content);
+  }
+  $scope.sortContent = (item) => {
+    if(item.created_at || item.snippet){
+      var created_at = item.created_at === undefined ? item.snippet.publishedAt : item.created_at;
+      var epoch = Date.parse(created_at)/1000;
+    }
+    console.log(epoch,"EPOCH");
+    console.log(item.created_time,"INSTAGRAM");
+    return -(epoch || item.created_time );
   }
 })
