@@ -27,6 +27,10 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
       console.log(`FB Feed Controller`);
       console.log(resp);
       if (resp) {
+        /* TODO:
+        videos
+        new Date('2016-08-31T03:01:32+0000').getTime()
+        */
         $scope.posts = resp.data.postsData;
         $scope.profPic = resp.data.profPic.url;
       }

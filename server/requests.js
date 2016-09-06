@@ -32,7 +32,10 @@ module.exports =  {
   },
 
   facebookGET: (id, token, cb) => {
-    request.get(`https://graph.facebook.com/v2.7/${id}?fields=posts.fields(status_type,picture,full_picture,message,created_time,description,place,source,type,from),picture,tagged,videos&access_token=${token}`,
+    const vidFields = `description,updated_time,id,embed_html`;
+    const postsFields = `status_type,picture,full_picture,message,created_time,description,place,source,type,from`;
+    request.get(`https://graph.facebook.com/v2.7/${id}?fields=posts.fields(${postsFields}),picture,tagged,videos{${vidFields}}&access_token=${token}`,
+    //embed_html
     /*Working get URLs:
     Preferred:
     https://graph.facebook.com/v2.7/${id}/posts?fields(status_type,link,picture,message,created_time,description,place,source,type)&access_token=${token}
@@ -49,10 +52,12 @@ module.exports =  {
         while res from "routesController.js" represents res coming ultimately
         from client side. The cb below uses the client "res", and its property
         ".send" is used to send to client, inside services.js, fbFeed. */
-        cb({postsData: objBody.posts.data,
+        cb({all: objBody,
+            postsData: objBody.posts.data,
             profPic: objBody.picture.data,
             tagged: objBody.tagged.data,
-            videos: objBody.videos.data});
+            videos: objBody.videos
+          });
     })
   },
 
