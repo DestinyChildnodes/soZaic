@@ -7,7 +7,7 @@ const utils = require(`../../serverController/utils.js`);
 module.exports = (appRoute, passport, key, localApiKeys) => {
 
   let callbackUrl = ""
-  if (key.twitter.TWITTER_CONSUMER_KEY && key.twitter.TWITTER_CONSUMER_SECRET) {
+  if (key.youtube.clientID  && key.youtube.clientSecret) {
     callbackUrl = `https://sozaic.herokuapp.com/api/youTube/auth/callback`
   } else {
     callbackUrl = utils.callbackURL('youTube')

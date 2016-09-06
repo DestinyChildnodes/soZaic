@@ -11,7 +11,7 @@ module.exports = function(appRoute, passport, key, localApiKeys) {
   //need following only for logging in:
 
   let callbackUrl = ""
-  if (key.twitter.TWITTER_CONSUMER_KEY && key.twitter.TWITTER_CONSUMER_SECRET) {
+  if (key.facebook.clientID && key.facebook.clientSecret) {
     callbackUrl = `https://sozaic.herokuapp.com/api/facebook/auth/callback`
   } else {
     callbackUrl = utils.callbackURL('facebook')
