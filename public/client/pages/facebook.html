@@ -25,11 +25,6 @@ Use additional get requests??
         <div class="fb-fullPic" id="vidDiv" ng-if="post.source">
           <video ng-src="{{ post.source | trustUrl }}" width="400" height="224" controls></video>
         </div>
-        <!-- <script type="text/javascript">
-        console.log('hello')
-          console.log('scriptscript', document.getElementById("vidDiv").value);
-          document.getElementById("vidDiv").innerHTML =  "ksldfj";
-        </script> -->
         <div class="fb-message">{{post.message}}</div>
         <!-- <div class="fb-action"><button ng-click="specificAction({st_type: post.status_type, id: post.id})" class="action">
           Action
