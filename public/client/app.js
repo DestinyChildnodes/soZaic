@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module(`sozaicApp`, [`sozaicApp.controller`,`sozaicApp.serviceFactories`, `ui.router`])
+angular.module(`sozaicApp`, [`sozaicApp.controller`,`sozaicApp.serviceFactories`, `sozaicApp.fbController`, `ui.router`])
 .config(($stateProvider, $urlRouterProvider) => {
   $stateProvider
     .state(`fbFeed`, {
