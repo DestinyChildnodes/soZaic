@@ -5,7 +5,7 @@ angular.module(`sozaicApp`, [`sozaicApp.controller`,`sozaicApp.serviceFactories`
   $stateProvider
     .state(`fbFeed`, {
       url: `/feed/facebook`,
-      templateUrl: `/pages/facebook/facebook.html`,
+      templateUrl: `/pages/facebook.html`,
       controller: `FbController`
     })
     .state(`youTubeFeed`, {
