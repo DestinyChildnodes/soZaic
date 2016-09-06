@@ -54,7 +54,6 @@ module.exports =  {
         cb({all: objBody,
             postsData: objBody.feed.data,
             profPic: objBody.picture.data,
-            tagged: objBody.tagged.data,
             videos: objBody.videos
           });
     })
