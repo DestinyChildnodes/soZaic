@@ -1,11 +1,8 @@
 node_modules
-client/bower_components
 .DS_Store
 .AppleDouble
 .LSOverride
 azure.err
 npm-debug.log
-
+serverController/localApiKeys.js
 public/dist
-
-server/apiKeys.js

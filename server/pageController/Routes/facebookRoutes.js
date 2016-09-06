@@ -5,14 +5,22 @@ const FacebookStrategy = require(`passport-facebook`).Strategy;
 const utils = require(`../../serverController/utils`);
 let userTokens = {};
 
-module.exports = function(appRoute, passport, key) {
+module.exports = function(appRoute, passport, key, localApiKeys) {
   console.log('Inside FB Routes');
 
   //need following only for logging in:
+
+  let callbackUrl = ""
+  if (key.twitter.TWITTER_CONSUMER_KEY && key.twitter.TWITTER_CONSUMER_SECRET) {
+    callbackUrl = `https://sozaic.herokuapp.com/api/facebook/auth/callback`
+  } else {
+    callbackUrl = utils.callbackURL('youTube')
+  }
+
   passport.use(new FacebookStrategy({
-    clientID: key.facebook.clientID,
-    clientSecret: key.facebook.clientSecret,
-    callbackURL: `http://local.host:8080/api/facebook/auth/callback`
+    clientID: key.facebook.clientID || localApiKeys.facebook.clientID,
+    clientSecret: key.facebook.clientSecret || localApiKeys.facebook.clientSecret,
+    callbackURL: callbackUrl
   },
     (accessToken, refreshToken, profile, cb) => {
       console.log(`before cb()`);

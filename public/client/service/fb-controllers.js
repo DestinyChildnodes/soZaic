@@ -13,7 +13,7 @@ angular.module(`sozaicApp.fbController`, [`sozaicApp.serviceFactories`, `ngSanit
   $scope.posts = [];
   $scope.allPosts = [];
   function integrateVids(all) {
-    if (all.videos.data.length) {
+    if (all.videos) {
       console.log('videos present: ', all.videos.data);
 
       all.videos.data.forEach((vid, iV, vidsArr) => {
