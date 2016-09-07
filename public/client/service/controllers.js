@@ -76,16 +76,21 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 .controller(`MixedController`, function($scope, GetFeed){
   $scope.content = [];
 
+  $scope.sortRandom = () => {
+    $scope.sortContent = (item) =>{
+      return Math.random() * 100;
+    }
+  }
+
   $scope.sortContent = (item) => {
     if(item.created_at || item.snippet){
       //if not instagram, then it is youtube
       var created_at = item.created_at === undefined ? item.snippet.publishedAt : item.created_at;
       var epoch = Date.parse(created_at)/1000;
     }
-    console.log(epoch,"EPOCH");
-    console.log(item.created_time,"INSTAGRAM");
     return -(epoch || item.created_time );
   }
+
   $scope.getFeeds = () => {
     GetFeed.twitterFeed().then(function(response) {
       $scope.content = $scope.content.concat(response.data);

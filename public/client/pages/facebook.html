@@ -7,8 +7,10 @@ Use additional get requests??
  <!DOCTYPE html>
  <body>
 <div id="view" ng-init="fbFeed()">
-  <div ng-show="posts.length === 0" ng-click="authFB()">
-    <img src="../style/fbLogin.png" width=150px height="auto">
+  <div class="login-box" ng-show="posts.length === 0" ng-click="authFB()">
+    <a class="btn btn-social btn-lg btn-facebook">
+  		<span class="fa fa-facebook"></span>Sign in with Facebook
+		</a>
   </div>
   <div id=" fb-Div" ng-if="posts.length > 0">
     <div ng-click="fbPostCtrl(yoyoyo)">Click Me</div>

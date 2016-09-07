@@ -170,6 +170,17 @@ angular.module(`sozaicApp.serviceFactories`, [])
     })
   }
 
+  // let twitterFormat = (username, id) => {
+  //   return $http({
+  //     method: `GET`,
+  //     url: `https://publish.twitter.com/oembed?url=https://twitter.com/`+username+`/status/`+id
+  //   }).then(res => {
+  //     console.log(res.html)
+  //     return res.html;
+  //
+  //   })
+  // }
+
   return {
     authTwitter: authTwitter,
     fbFeed: fbFeed,
@@ -179,6 +190,7 @@ angular.module(`sozaicApp.serviceFactories`, [])
     twitterFeed : twitterFeed,
     authInstagram : authInstagram,
     instagramFeed : instagramFeed,
+    // twitterFormat : twitterFormat,
     fbSpAction : fbSpAction,
     mixedArray: mixedArray,
     addNewest : addNewest,

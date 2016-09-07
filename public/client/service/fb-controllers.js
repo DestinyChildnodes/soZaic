@@ -58,7 +58,6 @@ angular.module(`sozaicApp.fbController`, [`sozaicApp.serviceFactories`, `ngSanit
         $scope.profPic = resp.data.profPic.url;
         setProfPic(resp.data.postsData);
         $scope.posts = resp.data.postsData;
-        GetFeed.mixedArray =GetFeed.mixedArray.concat($scope.posts);
 
       }
     }).catch(err =>{
