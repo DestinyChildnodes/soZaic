@@ -94,6 +94,9 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage
   }
 
   $scope.sortContent = (item) => {
+    if (item.epoch) {
+      return item.epoch/1000;
+    }
     if(item.created_at || item.snippet){
       //if not instagram, then it is youtube
       var created_at = item.created_at === undefined ? item.snippet.publishedAt : item.created_at;
@@ -111,7 +114,7 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage
     if ($localStorage.facebookFeed) {
       $scope.content = $scope.content.concat($localStorage.facebookFeed)
     }
-    
+
     if ($localStorage.youTubeFeed) {
 
       $scope.content = $scope.content.concat($localStorage.youTubeFeed)
