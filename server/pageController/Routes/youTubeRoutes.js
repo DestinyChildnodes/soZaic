@@ -26,8 +26,6 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
     })
   );
 
-  let token = "";
-
   appRoute.get('/auth', passport.authenticate('google', { scope : [
     'https://www.googleapis.com/auth/youtube.readonly',
     'https://www.googleapis.com/auth/plus.login'

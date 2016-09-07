@@ -5,10 +5,18 @@ const utils = require(`../../serverController/utils.js`)
 const InstagramStrategy = require(`passport-instagram`).Strategy;
 
 module.exports = (appRoute, passport, key, localApiKeys) => {
+
+  let callbackUrl = ""
+  if (key.twitter.TWITTER_CONSUMER_KEY && key.twitter.TWITTER_CONSUMER_SECRET) {
+    callbackUrl = `https://sozaic.herokuapp.com/api/instagram/auth/callback`
+  } else {
+    callbackUrl = utils.callbackURL('instagram');
+  }
+
 	passport.use(new InstagramStrategy({
    	clientID: key.instagram.ClientID || localApiKeys.instagram.ClientID,
     clientSecret: key.instagram.ClientSecret || localApiKeys.instagram.ClientSecret,
-    callbackURL: `http://local.host:8080/api/instagram/auth/callback`
+    callbackURL: callbackUrl
   },
   	(accessToken, refreshToken, profile, cb) => {
 

@@ -19,11 +19,9 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
       consumerKey: key.twitter.TWITTER_CONSUMER_KEY || localApiKeys.twitter.TWITTER_CONSUMER_KEY,
       consumerSecret: key.twitter.TWITTER_CONSUMER_SECRET || localApiKeys.twitter.TWITTER_CONSUMER_SECRET,
       callbackURL: callbackUrl
-      // callbackURL: utils.callbackURL('twitter')
   },
 
   (token, tokenSecret, profile, cb) => {
-
 
     let userToken = {
       username: profile.username,
