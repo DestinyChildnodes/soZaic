@@ -81,17 +81,28 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage
 
 .controller(`MixedController`, function($scope, GetFeed, $localStorage){
   $scope.content = [];
+  $scope.part1 = [];
+  $scope.part2 = [];
+  $scope.part3 = [];
 
   $scope.sortRandom = () => {
     $scope.sortContent = (item) =>{
       return Math.random() * 100;
     }
-    console.log("clicked")
+    $scope.splitContent();
+
   }
 
   $scope.delete = () => {
     $localStorage.$reset()
     $scope.content = [];
+  }
+
+  $scope.splitContent = () => {
+    var piece = $scope.content.length / 3;
+    $scope.part1 = $scope.content.slice(0, piece);
+    $scope.part2 = $scope.content.slice(piece, (piece * 2));
+    $scope.part3 = $scope.content.slice((piece * 2))
   }
 
   $scope.sortContent = (item) => {

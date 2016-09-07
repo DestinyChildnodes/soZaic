@@ -72,6 +72,10 @@ ul.tab li a {
 	float: right;
 }
 
+.mixedFeed {
+		display: inline;
+}
+
 blockquote {
   display: inline-block;
   background-color: #FFF;
