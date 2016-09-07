@@ -1,15 +1,21 @@
-<div ng-init = "getFeeds()">
+
+<div>
+<button ng-click="sortRandom()" type="button" class="btn btn-primary">
+	Shuffle
+</button>
+</div>
+<div class="mixedFeed" ng-init = "getFeeds()">
 	<!-- <div class = "login-box" ng-show="photos.length === 0" ng-click="authInstagram()">
 		<a class="btn btn-social btn-lg btn-instagram">
   		<span class="fa fa-instagram"></span>Sign in with Instagram
 		</a>
 	</div> -->
-	<span ng-repeat="item in content | orderBy: sortContent" >
+	<span class="float" ng-repeat="item in content | orderBy: sortContent" >
     <iframe ng-if="item.link" src="{{item.link | instagramEmbedUrl}}" width="400" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-    <li ng-if="item.user.screen_name" class="posts"><blockquote><p><a href="https://twitter.com/{{ item.user.screen_name }}/status/{{ item.id_str
+    <span ng-if="item.user.screen_name" class="posts"><blockquote><p><a href="https://twitter.com/{{ item.user.screen_name }}/status/{{ item.id_str
     }}">{{ item.text }}</a></p>
-    {{ item.created_at | date : "MM-dd-yyyy" }}</blockquote></li>
-    <iframe ng-if="item.snippet.publishedAt" width="420" height="345" ng-src="{{ item | youtubeEmbedUrl }}"></iframe>
+    {{ item.created_at | date : "MM-dd-yyyy" }}</blockquote></span>
+    <iframe class="float" ng-if="item.snippet.publishedAt" width="420" height="345" ng-src="{{ item | youtubeEmbedUrl }}"></iframe>
 
 	</span>
 </div>
