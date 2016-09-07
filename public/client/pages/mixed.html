@@ -30,7 +30,7 @@
 
       <!-- facebook -->
 
-      <div ng-if="item.created_time" class="fb-li"><blockquote class="fb-block">
+      <div ng-if="item.epoch" class="fb-li"><blockquote class="fb-block">
         <img class="fb-prof" src={{item.profUrl}} />
         <span class="fb-name">{{item.from.name}} posted</span>
         <span class="fb-time">{{item.created_time | date : "MM-dd-yyyy"}}</span>
