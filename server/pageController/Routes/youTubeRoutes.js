@@ -36,10 +36,9 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
   appRoute.get('/auth/callback', passport.authenticate('google', { failureRedirect: '/'}),
     function(req, res){
 
-      utils.createSession(req, res, req.user);
-
+      req.session.google = req.session.passport.user;
       appRoute.get('/feed', function(req, res) {
-        youTube.youTubeData(req, res, req.session.passport.user);
+        youTube.youTubeData(req, res, req.session.google);
       })
 
       res.redirect('/#/feed/youtube')

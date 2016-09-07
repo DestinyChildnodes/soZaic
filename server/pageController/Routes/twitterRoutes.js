@@ -42,17 +42,20 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
   utils.passportHelper(appRoute, passport, 'twitter', (req, res) => {
     // userTokens = req.user
 
-    utils.createSession(req, res, req.user);
+
+    req.session.twitter = req.session.passport.user
+    console.log("this is cookie", req.session)
+    // utils.createSession(req, res, req.user);
     res.redirect('/#/feed/twitter');
   });
 
   utils.routeFeed(appRoute, (req, res) => {
-    console.log("inside get Feed");
-    console.log(req.session)
-    if (req.session.passport === undefined) {
+    if (req.session.twitter === undefined) {
       res.status(404).send("Need to log in");
     } else {
-      twitterController.twitterData(req, res, req.session.passport.user.username, req.session.passport.user.token);
+      console.log("This is twitter", req.session.twitter)
+
+      twitterController.twitterData(req, res, req.session.twitter.username, req.session.twitter.token);
     }
   })
 

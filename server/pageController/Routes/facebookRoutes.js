@@ -38,26 +38,25 @@ module.exports = function(appRoute, passport, key, localApiKeys) {
   appRoute.get(`/auth/callback`,
     passport.authenticate(`facebook`, { failureRedirect: `/logindfgbr` }),
     function(req, res) {
-      utils.createSession(req, res, req.user);
+      req.session.facebook = req.session.passport.user
       res.redirect(`/#/feed/facebook`);
     }
   )
 
   utils.routeFeed(appRoute, (req, res) => {
 
-    if (req.session.passport === undefined) {
+    if (req.session.facebook === undefined) {
       res.status(404).send(`please login`);
     } else {
-      fbController.fbData(req, res, req.session.passport.user.profile.id, req.session.passport.user.accessToken);
+      fbController.fbData(req, res, req.session.facebook.profile.id, req.session.facebook.accessToken);
     }
   })
 
   //following only for logging in:
 
   appRoute.get(`/feed/specific`, (req, res) => {
-    fbController.fbSp(req, res, req.session.passport.user.profile.id,  req.session.passport.user.accessToken, req.query);
+    fbController.fbSp(req, res, req.session.facebook.profile.id,  req.session.facebook.accessToken, req.query);
   })
-
 };
 
 
