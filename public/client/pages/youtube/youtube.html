@@ -1,6 +1,6 @@
-<span ng-init="youTubeFeed()">
+<span >
 
-
+<button ng-click="youTubeFeed()">Refresh</button>
 <div class="login-box" ng-show="videos.length === 0" ng-click="authYouTube()" id="view">
     <a class="btn btn-social btn-lg btn-google">
         <span class="fa fa-google"></span> Sign in with Google
@@ -8,10 +8,13 @@
 </div>
 <ul ng-repeat="video in videos">
     <li>
-            <iframe width="420" height="345" ng-src="{{ video | youtubeEmbedUrl }}"></iframe>
+        <iframe width="420" height="345" ng-src="{{ video | youtubeEmbedUrl }}"></iframe>
     </li>
-
 </ul>
+
+
+</video>
+
 
 <script type="text/javascript" src="http://ytchannelembed.com/ytce-frgallery.js"></script>
 <!--

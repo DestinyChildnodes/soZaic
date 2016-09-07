@@ -1,9 +1,14 @@
+
 <span align="center" ng-init="twitterFeed()">
 
   <span class="login-box" ng-show="tweets.length === 0" ng-click="authTwitter()">
     <a class="btn btn-social btn-lg btn-twitter">
   		<span class="fa fa-twitter"></span>Sign in with Twitter
 		</a>
+<span align="center" ng-init="getlocalStorage()">
+  <button ng-click="twitterFeed()"> Refresh</button>
+  <span ng-show="$localStorage.twitterFeed === undefined" ng-click="authTwitter()">
+    <img src="../../style/twitlogin.png" width=150px height="auto">
   </span>
   <div class="postFeed">
   <ul class="feedList" ng-repeat="tweet in tweets">
