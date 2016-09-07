@@ -7,7 +7,7 @@ const utils = require(`../../serverController/utils.js`);
 module.exports = (appRoute, passport, key, localApiKeys) => {
 
   let callbackUrl = ""
-  if (key.twitter.TWITTER_CONSUMER_KEY && key.twitter.TWITTER_CONSUMER_SECRET) {
+  if (key.youtube.clientID  && key.youtube.clientSecret) {
     callbackUrl = `https://sozaic.herokuapp.com/api/youTube/auth/callback`
   } else {
     callbackUrl = utils.callbackURL('youTube')
@@ -36,9 +36,11 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
   appRoute.get('/auth/callback', passport.authenticate('google', { failureRedirect: '/'}),
     function(req, res){
 
-      token = req.user;
+      req.session.google = req.session.passport.user;
+      console.log("this is cookie", req.session)
+
       appRoute.get('/feed', function(req, res) {
-        youTube.youTubeData(req, res, token);
+        youTube.youTubeData(req, res, req.session.google);
       })
 
       res.redirect('/#/feed/youtube')

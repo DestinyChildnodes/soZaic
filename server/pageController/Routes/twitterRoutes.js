@@ -11,7 +11,7 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
   if (key.twitter.TWITTER_CONSUMER_KEY && key.twitter.TWITTER_CONSUMER_SECRET) {
     callbackUrl = `https://sozaic.herokuapp.com/api/twitter/auth/callback`
   } else {
-    callbackUrl = utils.callbackURL('twitter')
+    callbackUrl = utils.callbackURL('twitter');
   }
 
 
@@ -32,7 +32,6 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
         access_token_secret: tokenSecret
       }
     }
-
     cb(null, userToken);
   }
   ));
@@ -40,19 +39,15 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
   // appRoute.route(`/auth/callback`).get(passport.authenticate(option, {failureRedirect: `/login`}), callback);
 
   utils.passportHelper(appRoute, passport, 'twitter', (req, res) => {
-    // userTokens = req.user
-
-    utils.createSession(req, res, req.user);
+    req.session.twitter = req.session.passport.user
     res.redirect('/#/feed/twitter');
   });
 
   utils.routeFeed(appRoute, (req, res) => {
-    console.log("inside get Feed");
-    console.log(req.session)
-    if (req.session.passport === undefined) {
+    if (req.session.twitter === undefined) {
       res.status(404).send("Need to log in");
     } else {
-      twitterController.twitterData(req, res, req.session.passport.user.username, req.session.passport.user.token);
+      twitterController.twitterData(req, res, req.session.twitter.username, req.session.twitter.token);
     }
   })
 

@@ -3,7 +3,7 @@
 const fbController = require('../routesController');
 const FacebookStrategy = require(`passport-facebook`).Strategy;
 const utils = require(`../../serverController/utils`);
-let userTokens = {};
+
 
 module.exports = function(appRoute, passport, key, localApiKeys) {
   console.log('Inside FB Routes');
@@ -11,10 +11,10 @@ module.exports = function(appRoute, passport, key, localApiKeys) {
   //need following only for logging in:
 
   let callbackUrl = ""
-  if (key.twitter.TWITTER_CONSUMER_KEY && key.twitter.TWITTER_CONSUMER_SECRET) {
+  if (key.facebook.clientID && key.facebook.clientSecret) {
     callbackUrl = `https://sozaic.herokuapp.com/api/facebook/auth/callback`
   } else {
-    callbackUrl = utils.callbackURL('youTube')
+    callbackUrl = utils.callbackURL('facebook')
   }
 
   passport.use(new FacebookStrategy({
@@ -23,60 +23,40 @@ module.exports = function(appRoute, passport, key, localApiKeys) {
     callbackURL: callbackUrl
   },
     (accessToken, refreshToken, profile, cb) => {
-      console.log(`before cb()`);
-      console.log(profile);
-      console.log(accessToken);
-      console.log(refreshToken);
+      let userTokens = {};
+
       userTokens.profile = profile;
       userTokens.accessToken = accessToken;
+
       cb(null, userTokens);
     }
   ));
-  //
-  // appRoute.get(`/auth`,
-  //   passport.authenticate(`facebook`)
-  // );
+
   appRoute.get('/auth', passport.authenticate('facebook', { scope : ['user_friends', `user_photos`, `user_videos`, `public_profile`, `user_posts`, `user_likes`]}));
-  // utils.passportHelper(appRoute, passport, `facebook`, function(req, res) {
-  //   console.log(`should redirect...`);
-  //   console.log("frkejhgvlsdfhnlsdfsf", userTokens);
-  //   console.log(req.user);
-  //   // userTokens = req.user;
-  //   res.redirect(`/`);
-  // })
 
 
-  utils.routeFeed(appRoute, (req, res) => {
-    console.log(`FB utils.routefeed`);
-    console.log(`userTokens`, userTokens);
-    // console.log(`yoyoyoyo`, req.data);
-    // console.log(`yoyoyoyo`, req.params);
-    if (userTokens.profile === undefined) {
-      console.log(`mayday mayday`);
-      res.status(404).send(`please login`);
-    } else {
-      console.log(`userToken.accessToken`, userTokens.accessToken);
-      fbController.fbData(req, res, userTokens.profile.id, userTokens.accessToken);
-    }
-  })
-
-  //following only for logging in:
   appRoute.get(`/auth/callback`,
     passport.authenticate(`facebook`, { failureRedirect: `/logindfgbr` }),
     function(req, res) {
-      // console.log(`yoyoyoyo`, req.data);
-      // console.log(`yoyoyoyo`, req.params);
-      console.log(`should redirect...`);
+      req.session.facebook = req.session.passport.user
       res.redirect(`/#/feed/facebook`);
     }
   )
 
-  appRoute.get(`/feed/specific`, (req, res) => {
-    console.log(req.query);
-    console.log(typeof fbController.fbSp);
-    fbController.fbSp(req, res, userTokens.profile.id,  userTokens.accessToken, req.query);
+  utils.routeFeed(appRoute, (req, res) => {
+
+    if (req.session.facebook === undefined) {
+      res.status(404).send(`please login`);
+    } else {
+      fbController.fbData(req, res, req.session.facebook.profile.id, req.session.facebook.accessToken);
+    }
   })
 
+  //following only for logging in:
+
+  appRoute.get(`/feed/specific`, (req, res) => {
+    fbController.fbSp(req, res, req.session.facebook.profile.id,  req.session.facebook.accessToken, req.query);
+  })
 };
 
 

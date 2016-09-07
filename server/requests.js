@@ -47,7 +47,7 @@ module.exports =  {
     (err, res, body) => {
         if (err) () => console.log(err);
         const objBody = JSON.parse(body);
-
+        console.log(`objBodyobjBody`, objBody);
         /*Note: Must use cb since 'res' here represents response from FB,
         while res from "routesController.js" represents res coming ultimately
         from client side. The cb below uses the client "res", and its property
