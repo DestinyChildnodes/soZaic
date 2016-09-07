@@ -6,15 +6,14 @@ http://www.barelyfitz.com/screencast/html-training/css/positioning/
 https://developers.facebook.com/docs/graph-api/reference/v2.7/user/feed
 */
 
-angular.module(`sozaicApp.fbController`, [`sozaicApp.serviceFactories`, `ngSanitize`])
+angular.module(`sozaicApp.fbController`, [`sozaicApp.serviceFactories`, `ngSanitize`, `ngStorage`])
 
-.controller(`FbController`, function ($scope, GetFeed, $sce) {
+.controller(`FbController`, function ($scope, GetFeed, $sce, $localStorage) {
   console.log('hello FB Controller');
   $scope.posts = [];
   $scope.allPosts = [];
   function integrateVids(all) {
     if (all.videos) {
-      console.log('videos present: ', all.videos.data);
 
       all.videos.data.forEach((vid, iV, vidsArr) => {
         vid.created_time = vid.updated_time;
@@ -22,8 +21,7 @@ angular.module(`sozaicApp.fbController`, [`sozaicApp.serviceFactories`, `ngSanit
         let last = true;
         all.postsData.forEach((post, iPost, postsArr) => {
           let postEpoch = new Date(post.created_time).getTime();
-          console.log(`vid`, vidEpoch);
-          console.log(`post`, postEpoch);
+
           if (vidEpoch > postEpoch && last) {
             // console.log(`vid is bigger`);
             postsArr.splice(iPost, 0, vid);
@@ -59,6 +57,9 @@ angular.module(`sozaicApp.fbController`, [`sozaicApp.serviceFactories`, `ngSanit
         setProfPic(resp.data.postsData);
         $scope.posts = resp.data.postsData;
 
+        $localStorage.facebookFeed = $scope.posts;
+        GetFeed.mixedArray = GetFeed.mixedArray.concat($scope.posts);
+
       }
     }).catch(err =>{
         console.error(err);
@@ -66,15 +67,9 @@ angular.module(`sozaicApp.fbController`, [`sozaicApp.serviceFactories`, `ngSanit
   }
 
   $scope.fbPostCtrl = (dataObj) => {
-    console.log('fbPostCtrl controller activated');
-    // console.log(type);
-    console.log(GetFeed.fbPostFactory);
-    // console.log(GetFeed.fbFeed);
     GetFeed.fbPostFactory(dataObj).then(function(resp) {
-      console.log(`FB Post controllers`);
-      console.log(resp);
+
       if (resp) {
-        console.log(`fbPostCtrl Controller success`);
         console.log(resp);
       }
     }).catch(err => {

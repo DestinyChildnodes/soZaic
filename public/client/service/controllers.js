@@ -1,10 +1,11 @@
 "use strict";
 
-angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
+angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage"])
 
-.controller('YouTubeController', function($scope, GetFeed) {
+.controller('YouTubeController', function($scope, GetFeed, $localStorage) {
   $scope.title = `youtube`;
   $scope.videos = [];
+
   $scope.authYouTube = () => GetFeed.authYouTube();
   $scope.youTubeFeed = function() {
     GetFeed.youTubeFeed().then(function(response) {
@@ -12,17 +13,20 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
       console.log(response.data)
       for (let channel of channels) {
         if (channel.items.length > 0) {
+
           $scope.videos = $scope.videos.concat(channel.items.slice(0, 2));
         }
       }
+
+      $localStorage.youTubeFeed = $scope.videos;
+
       GetFeed.addNewest($scope.videos);
     })
-
   }
-  //
-  // $scope.getIframeSrc = function (videoId) {
-  //   return 'https://www.youtube.com/embed/' + videoId;
-  // };
+
+  $scope.getlocalStorage = function() {
+    $scope.videos = $localStorage.youTubeFeed;
+  }
 })
 
  .filter('youtubeEmbedUrl', function ($sce) {
@@ -31,7 +35,7 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
     };
   })
 
-.controller(`IGController`, function ($scope, GetFeed) {
+.controller(`IGController`, function ($scope, GetFeed,$localStorage) {
   $scope.title = `Instagram`;
   $scope.photos = [];
   $scope.authInstagram = () => GetFeed.authInstagram();
@@ -39,6 +43,7 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
     GetFeed.instagramFeed().then(function(response) {
       console.log(response.data.data);
       $scope.photos = response.data.data;
+      $localStorage.instagramFeed = $scope.photos;
       GetFeed.addNewest($scope.photos);
     })
   }
@@ -50,14 +55,18 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   };
 })
 
-.controller(`TwtrController`, function ($scope, GetFeed) {
+.controller(`TwtrController`, function ($scope, GetFeed, $localStorage) {
   $scope.title = `twitter`;
   $scope.tweets = [];
   $scope.authTwitter = () => GetFeed.authTwitter();
   $scope.twitterFeed = () => {
 
+
+
     GetFeed.twitterFeed().then(function(response) {
       $scope.tweets = response.data;
+      $localStorage.twitterFeed = $scope.tweets;
+
       // GetFeed.addNewest($scope.tweets);
       // if (GetFeed.mixedArray.length > 0){
       //   GetFeed.mixedArray.forEach(function(prop){
@@ -69,11 +78,16 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
       //   GetFeed.mixedArray = GetFeed.mixedArray.concat($scope.tweets);
       // }
       // GetFeed.lastTweet = response.data[response.data.length-1].id;
+
     }).catch(err => console.error(err));
+  }
+
+  $scope.getlocalStorage = function() {
+    $scope.tweets = $localStorage.twitterFeed;
   }
 })
 
-.controller(`MixedController`, function($scope, GetFeed){
+.controller(`MixedController`, function($scope, GetFeed, $localStorage){
   $scope.content = [];
 
   $scope.sortRandom = () => {
@@ -88,27 +102,68 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
       var created_at = item.created_at === undefined ? item.snippet.publishedAt : item.created_at;
       var epoch = Date.parse(created_at)/1000;
     }
+
     return -(epoch || item.created_time );
   }
 
   $scope.getFeeds = () => {
-    GetFeed.twitterFeed().then(function(response) {
-      $scope.content = $scope.content.concat(response.data);
-    })
+    // GetFeed.twitterFeed().then(function(response) {
+    //   $scope.content = $scope.content.concat(response.data);
+    // })
 
-    GetFeed.instagramFeed().then(function(responseIns) {
-      $scope.content = $scope.content.concat(responseIns.data.data);
-    })
+    if ($localStorage.facebookFeed) {
+        console.log($localStorage.facebookFeed)
+      $scope.content = $scope.content.concat($localStorage.facebookFeed)
+    } else {
+      console.log(undefined)
+    }
 
-    GetFeed.youTubeFeed().then(function(response) {
-      let channels = response.data;
-      for (let channel of channels) {
-        if (channel.items.length > 0) {
-          $scope.content = $scope.content.concat(channel.items.slice(0, 2));
-        }
-      }
-    })
+    if ($localStorage.youTubeFeed) {
+      console.log($localStorage.youTubeFeed)
+
+      $scope.content = $scope.content.concat($localStorage.youTubeFeed)
+    } else {
+      console.log(undefined)
+
+    }
+
+    if ($localStorage.twitterFeed) {
+      console.log($localStorage.twitterFeed)
+
+      $scope.content = $scope.content.concat($localStorage.twitterFeed);
+    } else {
+      console.log(undefined)
+
+    }
+
+    if ($localStorage.instagramFeed) {
+      console.log($localStorage.instagram)
+
+      $scope.content = $scope.content.concat($localStorage.instagramFeed);
+    } else {
+      console.log(undefined)
+
+    }
+
+
+    console.log("This is scope content", $scope.content);
+
+
+    // GetFeed.instagramFeed().then(function(responseIns) {
+    //   $scope.content = $scope.content.concat(responseIns.data.data);
+    // })
+
+    // GetFeed.youTubeFeed().then(function(response) {
+    //   let channels = response.data;
+    //   for (let channel of channels) {
+    //     if (channel.items.length > 0) {
+    //       $scope.content = $scope.content.concat(channel.items.slice(0, 2));
+    //     }
+    //   }
+    // })
+
   }
+
 
 
 })
