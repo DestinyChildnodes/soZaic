@@ -82,9 +82,6 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage
     }).catch(err => console.error(err));
   }
 
-  $scope.getlocalStorage = function() {
-    $scope.tweets = $localStorage.twitterFeed;
-  }
 })
 
 .controller(`MixedController`, function($scope, GetFeed, $localStorage){
@@ -101,9 +98,9 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage
       //if not instagram, then it is youtube
       var created_at = item.created_at === undefined ? item.snippet.publishedAt : item.created_at;
       var epoch = Date.parse(created_at)/1000;
-    }
 
-    return -(epoch || item.created_time );
+      return -(epoch || item.created_time );
+    }
   }
 
   $scope.getFeeds = () => {
@@ -112,37 +109,20 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage
     // })
 
     if ($localStorage.facebookFeed) {
-        console.log($localStorage.facebookFeed)
       $scope.content = $scope.content.concat($localStorage.facebookFeed)
-    } else {
-      console.log(undefined)
     }
-
+    
     if ($localStorage.youTubeFeed) {
-      console.log($localStorage.youTubeFeed)
 
       $scope.content = $scope.content.concat($localStorage.youTubeFeed)
-    } else {
-      console.log(undefined)
-
     }
 
     if ($localStorage.twitterFeed) {
-      console.log($localStorage.twitterFeed)
-
       $scope.content = $scope.content.concat($localStorage.twitterFeed);
-    } else {
-      console.log(undefined)
-
     }
 
     if ($localStorage.instagramFeed) {
-      console.log($localStorage.instagram)
-
       $scope.content = $scope.content.concat($localStorage.instagramFeed);
-    } else {
-      console.log(undefined)
-
     }
 
 
