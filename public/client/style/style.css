@@ -72,8 +72,8 @@ ul.tab li a {
 	float: right;
 }
 
-.mixedFeed {
-		display: inline;
+.column{
+	width:25%;
 }
 
 blockquote {
