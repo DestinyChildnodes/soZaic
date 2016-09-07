@@ -7,7 +7,7 @@ const InstagramStrategy = require(`passport-instagram`).Strategy;
 module.exports = (appRoute, passport, key, localApiKeys) => {
 
   let callbackUrl = ""
-  if (key.twitter.TWITTER_CONSUMER_KEY && key.twitter.TWITTER_CONSUMER_SECRET) {
+  if (key.instagram.ClientID && key.instagram.ClientSecret) {
     callbackUrl = `https://sozaic.herokuapp.com/api/instagram/auth/callback`
   } else {
     callbackUrl = utils.callbackURL('instagram');
