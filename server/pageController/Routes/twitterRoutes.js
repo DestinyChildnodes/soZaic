@@ -32,7 +32,6 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
         access_token_secret: tokenSecret
       }
     }
-
     cb(null, userToken);
   }
   ));
@@ -40,12 +39,7 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
   // appRoute.route(`/auth/callback`).get(passport.authenticate(option, {failureRedirect: `/login`}), callback);
 
   utils.passportHelper(appRoute, passport, 'twitter', (req, res) => {
-    // userTokens = req.user
-
-
     req.session.twitter = req.session.passport.user
-    console.log("this is cookie", req.session)
-    // utils.createSession(req, res, req.user);
     res.redirect('/#/feed/twitter');
   });
 
@@ -53,8 +47,6 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
     if (req.session.twitter === undefined) {
       res.status(404).send("Need to log in");
     } else {
-      console.log("This is twitter", req.session.twitter)
-
       twitterController.twitterData(req, res, req.session.twitter.username, req.session.twitter.token);
     }
   })

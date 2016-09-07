@@ -37,6 +37,8 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
     function(req, res){
 
       req.session.google = req.session.passport.user;
+      console.log("this is cookie", req.session)
+
       appRoute.get('/feed', function(req, res) {
         youTube.youTubeData(req, res, req.session.google);
       })

@@ -9,11 +9,10 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   $scope.youTubeFeed = function() {
     GetFeed.youTubeFeed().then(function(response) {
       let channels = response.data;
-      // console.log(response.data)
+      console.log(response.data)
       for (let channel of channels) {
         if (channel.items.length > 0) {
           $scope.videos = $scope.videos.concat(channel.items.slice(0, 2));
-          console.log($scope.videos,"sdasdasd");
         }
       }
       GetFeed.addNewest($scope.videos);

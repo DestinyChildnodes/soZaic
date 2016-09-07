@@ -25,8 +25,7 @@ module.exports = (appRoute, passport, key, localApiKeys) => {
     passport.authenticate(`instagram`, { failureRedirect: '/'}),
    function(req, res){
 
-     req.session.instagram = req.session.passport.user
-
+    req.session.instagram = req.session.passport.user
     res.redirect('/#/feed/instagram');
   });
 
