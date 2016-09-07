@@ -56,16 +56,29 @@ angular.module(`sozaicApp.fbController`, [`sozaicApp.serviceFactories`, `ngSanit
         integrateVids(resp.data);
         $scope.profPic = resp.data.profPic.url;
         setProfPic(resp.data.postsData);
-        /* TODO:
-        videos
-        new Date('2016-08-31T03:01:32+0000').getTime()
-        */
         $scope.posts = resp.data.postsData;
         GetFeed.mixedArray =GetFeed.mixedArray.concat($scope.posts);
 
       }
     }).catch(err =>{
         console.error(err);
+    })
+  }
+
+  $scope.fbPostCtrl = (dataObj) => {
+    console.log('fbPostCtrl controller activated');
+    // console.log(type);
+    console.log(GetFeed.fbPostFactory);
+    // console.log(GetFeed.fbFeed);
+    GetFeed.fbPostFactory(dataObj).then(function(resp) {
+      console.log(`FB Post controllers`);
+      console.log(resp);
+      if (resp) {
+        console.log(`fbPostCtrl Controller success`);
+        console.log(resp);
+      }
+    }).catch(err => {
+      console.error(err);
     })
   }
 })

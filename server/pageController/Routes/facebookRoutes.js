@@ -57,6 +57,11 @@ module.exports = function(appRoute, passport, key, localApiKeys) {
   appRoute.get(`/feed/specific`, (req, res) => {
     fbController.fbSp(req, res, req.session.facebook.profile.id,  req.session.facebook.accessToken, req.query);
   })
+
+  appRoute.get(`/feed/post`, (req, res) => {
+    console.log(req.data);
+  })
+
 };
 
 
