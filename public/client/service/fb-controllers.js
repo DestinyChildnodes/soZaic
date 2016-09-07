@@ -19,12 +19,13 @@ angular.module(`sozaicApp.fbController`, [`sozaicApp.serviceFactories`, `ngSanit
       all.videos.data.forEach((vid, iV, vidsArr) => {
         vid.created_time = vid.updated_time;
         let vidEpoch = new Date(vid.created_time).getTime();
-        console.log(vidEpoch);
         let last = true;
         all.postsData.forEach((post, iPost, postsArr) => {
           let postEpoch = new Date(post.created_time).getTime();
-          console.log(postEpoch);
-          if (vidEpoch > postEpoch) {
+          console.log(`vid`, vidEpoch);
+          console.log(`post`, postEpoch);
+          if (vidEpoch > postEpoch && last) {
+            // console.log(`vid is bigger`);
             postsArr.splice(iPost, 0, vid);
             last = false;
           }

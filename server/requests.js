@@ -33,25 +33,26 @@ module.exports =  {
   },
 
   facebookGET: (id, token, cb) => {
-    const vidFields = `description,updated_time,id,embed_html,source,permalink_url`;
+    const vidFields = `description,updated_time,id,embed_html,source,permalink_url,created_time`;
     const postsFields = `status_type,picture,full_picture,message,created_time,description,place,source,type,from{picture}`;
     request.get(`https://graph.facebook.com/v2.7/${id}?fields=feed.fields(${postsFields}),picture,tagged,videos{${vidFields}}&access_token=${token}`,
     //embed_html
     /*Working get URLs:
-    Preferred:
     https://graph.facebook.com/v2.7/${id}/posts?fields(status_type,link,picture,message,created_time,description,place,source,type)&access_token=${token}
-
     me?fields=posts.fields(status_type,picture,message,created_time,description,place,source,type)
     https://graph.facebook.com/v2.7/10207067440152981_10207068465138605?access_token=${token}
     */
     (err, res, body) => {
         if (err) () => console.log(err);
         const objBody = JSON.parse(body);
-        console.log(`objBodyobjBody`, objBody);
+        // console.log(`objBodyobjBody`, objBody);
         /*Note: Must use cb since 'res' here represents response from FB,
         while res from "routesController.js" represents res coming ultimately
         from client side. The cb below uses the client "res", and its property
         ".send" is used to send to client, inside services.js, fbFeed. */
+        // console.log(`vidsvidsvids`, objBody.videos.data);
+        // console.log(`postspostsposts`, objBody.feed.data);
+        // console.log(objBody.feed.data.length);
         cb({all: objBody,
             postsData: objBody.feed.data,
             profPic: objBody.picture.data,
