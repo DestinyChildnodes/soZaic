@@ -12,11 +12,11 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
       // console.log(response.data)
       for (let channel of channels) {
         if (channel.items.length > 0) {
-          $scope.videos = $scope.videos.concat(channel.items);
+          $scope.videos = $scope.videos.concat(channel.items.slice(0, 2));
           console.log($scope.videos,"sdasdasd");
         }
       }
-      GetFeed.mixedArray = GetFeed.mixedArray.concat($scope.videos);
+      GetFeed.addNewest($scope.videos);
     })
 
   }
@@ -38,8 +38,9 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
   $scope.authInstagram = () => GetFeed.authInstagram();
   $scope.instagramFeed = () => {
     GetFeed.instagramFeed().then(function(response) {
+      console.log(response.data.data);
       $scope.photos = response.data.data;
-      GetFeed.mixedArray = GetFeed.mixedArray.concat($scope.photos);
+      GetFeed.addNewest($scope.photos);
     })
   }
 })
@@ -58,19 +59,27 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
 
     GetFeed.twitterFeed().then(function(response) {
       $scope.tweets = response.data;
-      GetFeed.mixedArray = GetFeed.mixedArray.concat($scope.tweets);
+      // GetFeed.addNewest($scope.tweets);
+      // if (GetFeed.mixedArray.length > 0){
+      //   GetFeed.mixedArray.forEach(function(prop){
+      //     if (prop.id > GetFeed.lastTweet){
+      //       GetFeed.mixedArray = GetFeed.mixedArray.concat(prop);
+      //     }
+      //   })
+      // } else {
+      //   GetFeed.mixedArray = GetFeed.mixedArray.concat($scope.tweets);
+      // }
+      // GetFeed.lastTweet = response.data[response.data.length-1].id;
     }).catch(err => console.error(err));
   }
 })
 
 .controller(`MixedController`, function($scope, GetFeed){
   $scope.content = [];
-  $scope.loadContent = () => {
-    $scope.content = GetFeed.mixedArray;
-    console.log("MixedController",$scope.content);
-  }
+
   $scope.sortContent = (item) => {
     if(item.created_at || item.snippet){
+      //if not instagram, then it is youtube
       var created_at = item.created_at === undefined ? item.snippet.publishedAt : item.created_at;
       var epoch = Date.parse(created_at)/1000;
     }
@@ -78,4 +87,24 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`])
     console.log(item.created_time,"INSTAGRAM");
     return -(epoch || item.created_time );
   }
+  $scope.getFeeds = () => {
+    GetFeed.twitterFeed().then(function(response) {
+      $scope.content = $scope.content.concat(response.data);
+    })
+
+    GetFeed.instagramFeed().then(function(responseIns) {
+      $scope.content = $scope.content.concat(responseIns.data.data);
+    })
+
+    GetFeed.youTubeFeed().then(function(response) {
+      let channels = response.data;
+      for (let channel of channels) {
+        if (channel.items.length > 0) {
+          $scope.content = $scope.content.concat(channel.items.slice(0, 2));
+        }
+      }
+    })
+  }
+
+
 })
