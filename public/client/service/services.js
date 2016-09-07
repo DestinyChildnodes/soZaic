@@ -121,10 +121,21 @@ angular.module(`sozaicApp.serviceFactories`, [])
   //   })
   // };
 
+  const fbPostFactory = (input) => {
+    return $http({
+      method: `POST`,
+      url: `api/facebook/feed/post`,
+      data: { newPost: input }
+    }).then( (resp) => {
+      console.log(`fbPostFactory success`);
+      console.log(resp);
+    })
+  }
+
   let fbSpAction = (dataObj) => {
     return $http({
-      method: 'GET',
-      url: 'api/facebook/feed/specific',
+      method: `GET`,
+      url: `api/facebook/feed/specific`,
       params: dataObj
     }).then((response) => {
       return response
@@ -171,6 +182,7 @@ angular.module(`sozaicApp.serviceFactories`, [])
     fbSpAction : fbSpAction,
     mixedArray: mixedArray,
     addNewest : addNewest,
-    lastTweet : lastTweet
+    lastTweet : lastTweet,
+  fbPostFactory
   }
 });

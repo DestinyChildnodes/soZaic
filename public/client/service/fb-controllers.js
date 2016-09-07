@@ -19,12 +19,13 @@ angular.module(`sozaicApp.fbController`, [`sozaicApp.serviceFactories`, `ngSanit
       all.videos.data.forEach((vid, iV, vidsArr) => {
         vid.created_time = vid.updated_time;
         let vidEpoch = new Date(vid.created_time).getTime();
-        console.log(vidEpoch);
         let last = true;
         all.postsData.forEach((post, iPost, postsArr) => {
           let postEpoch = new Date(post.created_time).getTime();
-          console.log(postEpoch);
-          if (vidEpoch > postEpoch) {
+          console.log(`vid`, vidEpoch);
+          console.log(`post`, postEpoch);
+          if (vidEpoch > postEpoch && last) {
+            // console.log(`vid is bigger`);
             postsArr.splice(iPost, 0, vid);
             last = false;
           }
@@ -56,16 +57,29 @@ angular.module(`sozaicApp.fbController`, [`sozaicApp.serviceFactories`, `ngSanit
         integrateVids(resp.data);
         $scope.profPic = resp.data.profPic.url;
         setProfPic(resp.data.postsData);
-        /* TODO:
-        videos
-        new Date('2016-08-31T03:01:32+0000').getTime()
-        */
         $scope.posts = resp.data.postsData;
         GetFeed.mixedArray =GetFeed.mixedArray.concat($scope.posts);
 
       }
     }).catch(err =>{
         console.error(err);
+    })
+  }
+
+  $scope.fbPostCtrl = (dataObj) => {
+    console.log('fbPostCtrl controller activated');
+    // console.log(type);
+    console.log(GetFeed.fbPostFactory);
+    // console.log(GetFeed.fbFeed);
+    GetFeed.fbPostFactory(dataObj).then(function(resp) {
+      console.log(`FB Post controllers`);
+      console.log(resp);
+      if (resp) {
+        console.log(`fbPostCtrl Controller success`);
+        console.log(resp);
+      }
+    }).catch(err => {
+      console.error(err);
     })
   }
 })
