@@ -22,22 +22,24 @@ module.exports = {
       // apiRequest.youtTubeGetPlaylists(token, )
       console.log(token)
       let items = JSON.parse(resData).items;
-      let promiseArr = [];
-        for (let item of items) {
-          promiseArr.push(new Promise(function(resolve, reject) {
-            let channelId = item.snippet.resourceId.channelId;
-              apiRequest.youtTubeGetPlaylists(token, channelId, (data) => {
-                console.log("in promise")
-                playlistData.push(data)
-                resolve(playlistData)
-              })
-            })
-          )
-        }
+      if (items.length > 0) {
+        let promiseArr = [];
+          for (let item of items) {
+            promiseArr.push(new Promise(function(resolve, reject) {
+              let channelId = item.snippet.resourceId.channelId;
+                apiRequest.youtTubeGetPlaylists(token, channelId, (data) => {
 
-        return Promise.all(promiseArr).then((data) => {
-          res.send(playlistData);
-        });
+                  playlistData.push(data)
+                  resolve(playlistData)
+                })
+              })
+            )
+          }
+
+          return Promise.all(promiseArr).then((data) => {
+            res.send(playlistData);
+          });
+      }
     });
   },
 
