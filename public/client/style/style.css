@@ -170,15 +170,9 @@ iframe {
   transform: translate(-50%,-50%);
 }
 
-.igdisplay {
-  padding-top: 10px;
-  padding-left: 10px;
-  align-content: center;
-}
-
-.ytFeed {
+.post-padding {
   list-style-type: none;
-	padding-top: 15px;
+	padding-top: 25px;
   display: inline-block;
 	margin: auto;
 }
@@ -188,8 +182,9 @@ iframe {
 	bottom: 0px;
 }
 
-.yspan {
-	margin: auto;
+.center-this {
+	width:90%;
+	margin: 0 auto;
 }
 
 /*.column{

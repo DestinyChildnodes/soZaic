@@ -1,15 +1,15 @@
-<div class="yspan" ng-init="youTubeFeed()">
+<div class="center-this" ng-init="youTubeFeed()">
 
 <div class="login-box" ng-show="videos.length === 0" ng-click="authYouTube()" id="view">
     <a class="btn btn-social btn-lg btn-google">
         <span class="fa fa-google"></span> Sign in with Google
     </a>
 </div>
-<ul class="ytFeed" ng-repeat="video in videos">
-    <li>
-        <iframe class="ytiframe" width="380" height="345" ng-src="{{ video | youtubeEmbedUrl }}"></iframe>
-    </li>
-</ul>
+<div class="row">
+  <span class="col-lg-4 col-md-6 post-padding" ng-repeat="video in videos">
+          <iframe width="380" height="345" ng-src="{{ video | youtubeEmbedUrl }}"></iframe>
+  </span>
+</div>
 
 
 </video>
