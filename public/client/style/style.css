@@ -72,9 +72,6 @@ ul.tab li a {
 	float: right;
 }
 
-.column{
-	width:25%;
-}
 
 blockquote {
   display: inline-block;
@@ -90,7 +87,12 @@ blockquote {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   margin: 10px 5px;
   padding: 16px 16px 16px 16px;
-  max-width: 300px;
+  width:30%;
+}
+
+.twitter-og{
+	max-width:300px;
+	width:auto;
 }
 
 .ytiframe {
@@ -102,7 +104,7 @@ blockquote {
   position: relative;
   max-width: 30%;
   padding: 0 16px 40px 16px;
-  min-width: 300px;
+  /*min-width: 300px;*/
 }
 
 .fb-prof {
@@ -140,10 +142,6 @@ blockquote {
   max-width: 90%;
 }
 
-.fb-action {
-
-}
-
 .login-box {
 	text-align: center;
   position: absolute;
@@ -166,3 +164,10 @@ blockquote {
 }
 
 
+.column{
+	max-width:33%;
+}
+
+/*.youtube-cntr {
+	text-align:
+}*/

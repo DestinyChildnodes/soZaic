@@ -13,7 +13,7 @@
     <div>
     <a class="twitter-grid" href="https://twitter.com/{{ tweet.user.screen_name }}/status/{{ tweet.id }}">National Park Tweets</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
-      <li class="posts"><blockquote><p width=400><a href="https://twitter.com/{{ tweet.user.screen_name }}/status/{{ tweet.id_str
+      <li class="posts"><blockquote class="twitter-og"><p width=400><a href="https://twitter.com/{{ tweet.user.screen_name }}/status/{{ tweet.id_str
   }}">{{ tweet.text }}</a></p>
       {{ tweet.created_at | date : "MM-dd-yyyy" }}</blockquote></li>
     </ul>
