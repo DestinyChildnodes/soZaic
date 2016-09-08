@@ -80,20 +80,15 @@ blockquote {
   font-size: 12px;
   font-weight: bold;
   line-height: 16px;
-  border-color: #eee #ddd #bbb;
+	border: none;
+  /*border-color: #eee #ddd #bbb;
   border-radius: 5px;
   border-style: solid;
-  border-width: 1px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  border-width: 1px;*/
   margin: 10px 5px;
   padding: 16px 16px 16px 16px;
-  width:30%;
 }
 
-.twitter-og{
-	max-width:300px;
-	width:auto;
-}
 
 .ytiframe {
   padding-top: 10px;
@@ -107,14 +102,16 @@ blockquote {
 
 .fb-block {
   position: relative;
-  max-width: 30%;
-  padding: 0 16px 40px 16px;
+  /*max-width: 30%;*/
+	width:95%;
+	padding-bottom: 50px;
+  /*padding: 0 16px 40px 16px;*/
   /*min-width: 300px;*/
 }
 
 .fb-prof {
   position: relative;
-  top: 10px;
+  top: -5px;
   left: 0px;
 }
 
@@ -169,10 +166,19 @@ blockquote {
 }
 
 
-.column{
-	max-width:33%;
-}
+/*.column{
+	width:33%;
 
+}*/
+
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+}
 /*.youtube-cntr {
 	text-align:
 }*/
