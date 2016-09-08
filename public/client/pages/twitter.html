@@ -10,9 +10,10 @@
 <span align="center" ng-init="twitterFeed()">
   <div class="postFeed">
     <ul class="feedList" ng-repeat="tweet in tweets">
-      <li class="posts"><blockquote class="twitter-og"><p width=400><a href="https://twitter.com/{{ tweet.user.screen_name }}/status/{{ tweet.id_str
-  }}">{{ tweet.text }}</a></p>
-      {{ tweet.created_at | date : "MM-dd-yyyy" }}</blockquote></li>
+      <li class="posts"><blockquote><p>
+           <a href="https://twitter.com/{{ tweet.user.screen_name }}/status/{{ tweet.id_str }}">{{ tweet.text }}</a></p>
+           -{{ tweet.user.screen_name }}(@{{ tweet.user.screen_name }})
+           {{ tweet.created_at }}</blockquote></li>
     </ul>
   </div>
 </span>
