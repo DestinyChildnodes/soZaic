@@ -13,11 +13,10 @@ Use additional get requests??
 		</a>
   </div>
   <div id=" fb-Div" ng-if="posts.length > 0">
-    <div ng-click="fbPostCtrl(yoyoyo)">Click Me</div>
-    <div ng-repeat="post in posts">
+    <span ng-repeat="post in posts">
       <!-- <img src="https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/13260129_10206443134745736_5750099962261197669_n.jpg?oh=22f626c227b2dbacecd26a035f5cae19&oe=5841C84D" /> -->
       <!-- <img src="https://scontent.xx.fbcdn.net/v/t1.0-9/s720x720/13260129_10206443134745736_5750099962261197669_n.jpg?oh=c464ad09a60edbb16eec706fecc83d07&oe=58508A40" /> -->
-      <div class="fb-li"><blockquote class="fb-block">
+      <span class="fb-li"><blockquote class="fb-block">
         <img class="fb-prof" src={{post.profUrl}} />
         <span class="fb-name">{{post.from.name}} posted</span>
         <span class="fb-time">{{post.created_time | date : "MM-dd-yyyy"}}</span>
@@ -29,8 +28,8 @@ Use additional get requests??
           </div>
           <div class="fb-message">{{post.message}}</div>
         </div>
-      </blockquote></div>
-    </div>
+      </blockquote></span>
+    </span>
   </div>
 </div>
 </body>

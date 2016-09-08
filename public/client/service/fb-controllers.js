@@ -38,6 +38,11 @@ angular.module(`sozaicApp.fbController`, [`sozaicApp.serviceFactories`, `ngSanit
   function setProfPic(all){
     all.forEach((post, i, arr) => {
       post.epoch = new Date(post.created_time).getTime();
+
+      if (!post.message && post.description) {
+        post.message = post.description;
+      }
+
       if (post.from) {
         post.profUrl = post.from.picture.data.url
       } else {
