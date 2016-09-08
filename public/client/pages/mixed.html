@@ -1,19 +1,18 @@
 
 <div ng-class="{'login-box': content.length === 0}">
-      <h1 ng-show="content.length === 0">NO MEDIA, ADD MORE!!!</h1>
+      <h1 ng-show="content.length === 0 && part1.length === 0 && part2.length === 0 && part3.length === 0">NO MEDIA, ADD MORE!!!</h1>
+			<button ng-click="sortRandom()" ng-show="content.length > 0" type="button" class="btn btn-primary">
+						Shuffle
+			</button>
 
-      <button ng-click="sortRandom()" ng-show="content.length > 0" type="button" class="btn btn-primary">
-      	Shuffle
-      </button>
-
-      <button ng-click="delete()" ng-show="content.length > 0" type="button" class="btn btn-primary">
-            Delete
-      </button>
+			<button ng-click="delete()" ng-show="content.length > 0" type="button" class="btn btn-primary">
+						Delete
+			</button>
 </div>
 
+	<div class="mixedFeed" ng-init="getFeeds()">
 
 
-	<div class="mixedFeed" ng-init ="getFeeds()">
 		<span class="column" ng-repeat="item in part1 | orderBy: sortContent">
 				<iframe ng-if="item.link" src="{{item.link | instagramEmbedUrl}}" width="30%" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
 		    <span ng-if="item.user.screen_name" class="posts"><blockquote><p><a href="https://twitter.com/{{ item.user.screen_name }}/status/{{ item.id_str
