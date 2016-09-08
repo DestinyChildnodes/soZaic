@@ -22,7 +22,7 @@ module.exports = {
       // apiRequest.youtTubeGetPlaylists(token, )
       console.log(token)
       let items = JSON.parse(resData).items;
-      if (items.length > 0) {
+      if (items) {
         let promiseArr = [];
           for (let item of items) {
             promiseArr.push(new Promise(function(resolve, reject) {
