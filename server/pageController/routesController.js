@@ -20,7 +20,6 @@ module.exports = {
 
     apiRequest.youtubeGET(token, (resData, token) => {
       // apiRequest.youtTubeGetPlaylists(token, )
-      console.log(token)
       let items = JSON.parse(resData).items;
       if (items) {
         let promiseArr = [];

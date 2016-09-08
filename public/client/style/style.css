@@ -7,6 +7,20 @@ body {
 	 background: #5C5C5C;
 }
 
+#mxbutton {
+	background-color: #ED6A5A;
+	outline: none;
+	border-style: none;
+	margin-top: 15px;
+	margin-left: 10px;
+	margin-bottom: 15px;
+}
+
+#mxbutton:hover {
+	border: none;
+	outline: none;
+}
+
 ul.tab {
     list-style-type: none;
     margin: 0;
@@ -22,6 +36,10 @@ ul.tab li {
   font-family: Helvetica;
 }
 
+ul.tab a:hover {
+	background-color: #e84630;
+	font-weight: bold;
+}
 
 ul.tab li a {
     display: inline-block;
@@ -33,7 +51,7 @@ ul.tab li a {
     transition: 0.3s;
     vertical-align: middle;
     position: relative;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .logo {
@@ -89,9 +107,7 @@ blockquote {
   padding: 16px 16px 16px 16px;
 }
 
-
-.ytiframe {
-  padding-top: 10px;
+iframe {
   border: none;
 }
 
@@ -162,9 +178,19 @@ blockquote {
 
 .ytFeed {
   list-style-type: none;
+	padding-top: 15px;
   display: inline-block;
+	margin: auto;
 }
 
+.footer {
+	position: fixed;
+	bottom: 0px;
+}
+
+.yspan {
+	margin: auto;
+}
 
 /*.column{
 	width:33%;
@@ -172,6 +198,7 @@ blockquote {
 }*/
 
 .card-columns {
+	padding: 10px;
   @include media-breakpoint-only(lg) {
     column-count: 4;
   }
@@ -179,6 +206,3 @@ blockquote {
     column-count: 5;
   }
 }
-/*.youtube-cntr {
-	text-align:
-}*/
