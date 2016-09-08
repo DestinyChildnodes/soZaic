@@ -9,7 +9,6 @@ https://developers.facebook.com/docs/graph-api/reference/v2.7/user/feed
 angular.module(`sozaicApp.fbController`, [`sozaicApp.serviceFactories`, `ngSanitize`, `ngStorage`])
 
 .controller(`FbController`, function ($scope, GetFeed, $sce, $localStorage) {
-  console.log('hello FB Controller');
   $scope.posts = [];
   $scope.allPosts = [];
   function integrateVids(all) {
@@ -59,7 +58,6 @@ angular.module(`sozaicApp.fbController`, [`sozaicApp.serviceFactories`, `ngSanit
         $scope.posts = resp.data.postsData;
 
         $localStorage.facebookFeed = $scope.posts;
-        GetFeed.mixedArray = GetFeed.mixedArray.concat($scope.posts);
 
       }
     }).catch(err =>{

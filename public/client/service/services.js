@@ -4,74 +4,6 @@
 angular.module(`sozaicApp.serviceFactories`, [])
 
 .factory(`GetFeed`, ($http, $window) => {
-  let mixedArray = [];
-  // latest timestamp of last thing of same type
-  let lastTweet = 0;
-
-
-  let addNewest = (arr) => {
-    console.log("CALLED ADD NEWESTTTT")
-    let isYoutube = false;
-    console.log('called add nestesetesfsd')
-    var property;
-    // this checks the type of media object
-    if (arr[0].created_at){
-      property = `created_at`;
-    } else if (arr[0].snippet){
-      property = `snippet.publishedAt`;
-      isYoutube = true;
-    } else if (arr[0].created_time){
-      property = `created_time`;
-    }
-    let isAlreadyType = false;
-    if (mixedArray.length > 0){
-      mixedArray.forEach(function(prop){
-        console.log("HELLLOOOOOO", mixedArray);
-        // if (property === `created_at` || property === `snippet.publishedAt`){
-        //    prop[property] = Date.parse(prop[property])/1000;
-        // }
-
-        console.log(prop[property], lastTweet);
-        if(property === `snippet.publishedAt` && prop['snippet']) {
-          if (prop['snippet']['publishedAt'] > lastTweet){
-            lastTweet = prop['snippet']['publishedAt'];
-            isAlreadyType = true;
-            console.log('identified youtube thing')
-          }
-        } else {
-          if (prop[property] && prop[property] > lastTweet){
-            lastTweet = prop[property];
-            isAlreadyType = true;
-          }
-        }
-      })
-    }
-
-    if(!isAlreadyType) {
-      lastTweet = 0;
-    }
-      // mixedArray = mixedArray.concat(arr);
-    arr.forEach(function(item) {
-      if(isYoutube) {
-        console.log('it is a youtube item', lastTweet, item['snippet']['publishedAt'])
-        if(Date.parse(item['snippet']['publishedAt'])/1000 > lastTweet) {
-          console.log('passed the test');
-          mixedArray.push(item);
-        }
-      } else if (property === `created_at`){
-        if (Date.parse(item[property])/1000 > lastTweet){
-          mixedArray.push(item)
-        }
-      }else {
-        if(item[property] > lastTweet) {
-          mixedArray.push(item);
-        }
-      }
-    })
-
-    console.log('final mixed array', mixedArray)
-    // lastTweet = arr[arr.length-1][property];
-  }
 
   let authTwitter = () => {
     //http://localhost:8080/api/twitter/auth/
@@ -189,10 +121,6 @@ angular.module(`sozaicApp.serviceFactories`, [])
     authInstagram : authInstagram,
     instagramFeed : instagramFeed,
     // twitterFormat : twitterFormat,
-    fbSpAction : fbSpAction,
-    mixedArray: mixedArray,
-    addNewest : addNewest,
-    lastTweet : lastTweet,
-  fbPostFactory
+    fbSpAction : fbSpAction
   }
 });

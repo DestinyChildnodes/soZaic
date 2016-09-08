@@ -10,7 +10,6 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage
   $scope.youTubeFeed = function() {
     GetFeed.youTubeFeed().then(function(response) {
       let channels = response.data;
-      console.log(response.data)
       for (let channel of channels) {
         if (channel.items.length > 0) {
 
@@ -19,8 +18,6 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage
       }
 
       $localStorage.youTubeFeed = $scope.videos;
-
-      GetFeed.addNewest($scope.videos);
     })
   }
 
@@ -41,10 +38,8 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage
   $scope.authInstagram = () => GetFeed.authInstagram();
   $scope.instagramFeed = () => {
     GetFeed.instagramFeed().then(function(response) {
-      console.log(response.data.data);
       $scope.photos = response.data.data;
       $localStorage.instagramFeed = $scope.photos;
-      GetFeed.addNewest($scope.photos);
     })
   }
 })
@@ -91,6 +86,12 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage
     $scope.sortContent = (item) =>{
       return Math.random() * 100;
     }
+    console.log("clicked")
+  }
+
+  $scope.delete = () => {
+    $localStorage.$reset()
+    $scope.content = [];
   }
 
   $scope.sortContent = (item) => {
@@ -146,6 +147,7 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage
     // })
 
   }
+
 
 
 
