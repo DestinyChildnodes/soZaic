@@ -96,6 +96,10 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage
   $scope.delete = () => {
     $localStorage.$reset()
     $scope.content = [];
+
+    $scope.part1 = [];
+    $scope.part2 = [];
+    $scope.part3 = [];
   }
 
   $scope.splitContent = () => {
