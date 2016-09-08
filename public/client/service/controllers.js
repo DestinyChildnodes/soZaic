@@ -96,9 +96,23 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage
   $scope.delete = () => {
     $localStorage.$reset()
     $scope.content = [];
+    $scope.part1 = [];
+    $scope.part2 = [];
+    $scope.part3 = [];
   }
 
   $scope.splitContent = () => {
+    $scope.content.forEach(function(item,index){
+      if(index % 3 === 0){
+        $scope.part1.push(item)
+      }else if(index % 2 === 0){
+        $scope.part2.push(item)
+      }else{
+        $scope.part3.push(item)
+      }
+    })
+
+
     var piece = $scope.content.length / 3;
     $scope.part1 = $scope.content.slice(0, piece);
     $scope.part2 = $scope.content.slice(piece, (piece * 2));
@@ -139,6 +153,8 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage
     if ($localStorage.instagramFeed) {
       $scope.content = $scope.content.concat($localStorage.instagramFeed);
     }
+
+    $scope.sortRandom();
 
 
     console.log("This is scope content", $scope.content);
