@@ -100,6 +100,11 @@ blockquote {
   border: none;
 }
 
+.twitter-og{
+	width:auto;
+	max-width: 400px;
+}
+
 .fb-block {
   position: relative;
   max-width: 30%;

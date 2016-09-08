@@ -15,7 +15,6 @@
 
 	<div class="mixedFeed" ng-init ="getFeeds()">
 		<span class="column" ng-repeat="item in part1 | orderBy: sortContent">
-			<!-- <li> -->
 				<iframe ng-if="item.link" src="{{item.link | instagramEmbedUrl}}" width="30%" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
 		    <span ng-if="item.user.screen_name" class="posts"><blockquote><p><a href="https://twitter.com/{{ item.user.screen_name }}/status/{{ item.id_str
 		    }}">{{ item.text }}</a></p>
@@ -34,10 +33,9 @@
 	          <div class="fb-message">{{item.message}}</div>
 	        </div>
 	      </blockquote></span>
-			<!-- </li> -->
 		</span>
+
 		<span class="column" ng-repeat="item in part2 | orderBy: sortContent">
-			<!-- <li> -->
 				<iframe ng-if="item.link" src="{{item.link | instagramEmbedUrl}}" width="30%" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
 		    <span ng-if="item.user.screen_name" class="posts"><blockquote><p><a href="https://twitter.com/{{ item.user.screen_name }}/status/{{ item.id_str
 		    }}">{{ item.text }}</a></p>
@@ -55,10 +53,8 @@
 	          <div class="fb-message">{{item.message}}</div>
 	        </div>
 	      </blockquote></span>
-			<!-- </li> -->
 		</span>
 		<span class="column" ng-repeat="item in part3 | orderBy: sortContent">
-			<!-- <li> -->
 				<iframe ng-if="item.link" src="{{item.link | instagramEmbedUrl}}" width="30%" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
 				<span ng-if="item.user.screen_name" class="posts"><blockquote><p><a href="https://twitter.com/{{ item.user.screen_name }}/status/{{ item.id_str
 				}}">{{ item.text }}</a></p>
