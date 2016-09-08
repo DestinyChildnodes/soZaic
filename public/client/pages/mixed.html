@@ -1,15 +1,19 @@
 
-<div>
-<button ng-click="sortRandom()" type="button" class="btn btn-primary">
-	Shuffle
-</button>
+<div ng-class="{'login-box': content.length === 0}">
+      <h1 ng-show="content.length === 0">NO MEDIA, ADD MORE!!!</h1>
+
+      <button ng-click="sortRandom()" ng-show="content.length > 0" type="button" class="btn btn-primary">
+      	Shuffle
+      </button>
+
+      <button ng-click="delete()" ng-show="content.length > 0" type="button" class="btn btn-primary">
+            Delete
+      </button>
 </div>
-<div class="mixedFeed" ng-init = "getFeeds()">
-	<!-- <div class = "login-box" ng-show="photos.length === 0" ng-click="authInstagram()">
-		<a class="btn btn-social btn-lg btn-instagram">
-  		<span class="fa fa-instagram"></span>Sign in with Instagram
-		</a>
-	</div> -->
+
+
+<div class="mixedFeed" ng-init="getFeeds()">
+
 
 	<span ng-repeat="item in content | orderBy: sortContent" >
 
