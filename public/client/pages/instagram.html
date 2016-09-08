@@ -1,19 +1,12 @@
-<div class="igdisplay" ng-init="instagramFeed()">
+<div class="center-this" ng-init="instagramFeed()">
 	<div class = "login-box" ng-show="photos.length === 0" ng-click="authInstagram()">
 		<a class="btn btn-social btn-lg btn-instagram">
   		<span class="fa fa-instagram"></span>Sign in with Instagram
 		</a>
 	</div>
-	<span ng-repeat="photo in photos">
-
-		<iframe src="{{photo.link | instagramEmbedUrl}}" width="400" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-	</span>
+	<div class="row">
+		<span class="col-lg-4 col-md-6 post-padding" ng-repeat="photo in photos">
+				<iframe src="{{photo.link | instagramEmbedUrl}}" width="400" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+		</span>
+	</div>
 </div>
-
-
-
-<!-- CSS for Instagram log in button,
-taken from Jim Ramsden at
-https://dribbble.com/shots/731763-Sign-in-with-Instagram
-NOT implemented yet. Can reimplement if bootstrap-social doesn't work out
--->
