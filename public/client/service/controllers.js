@@ -61,7 +61,7 @@ angular.module(`sozaicApp.controller`, [`sozaicApp.serviceFactories`, "ngStorage
     GetFeed.twitterFeed().then(function(response) {
       $scope.tweets = response.data;
       $localStorage.twitterFeed = $scope.tweets;
-
+        console.log(response.data);
       // GetFeed.addNewest($scope.tweets);
       // if (GetFeed.mixedArray.length > 0){
       //   GetFeed.mixedArray.forEach(function(prop){
