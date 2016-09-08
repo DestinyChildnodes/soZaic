@@ -1,0 +1,149 @@
+@font-face {
+	font-family: Sandoval;
+	src: url(sandoval.ttf);
+}
+
+body {
+	background-color: #fefbf7;
+}
+
+/*    *****NAVIGATION*****      */
+
+
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    background-color: #92DCE5;
+    font-family: sans-serif;
+}
+
+ul.tab li {
+	float: left;
+}
+
+ul.tab li a {
+    display: inline-block;
+    color: #2B303A;
+    font-style: bold;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 30px;
+}
+
+ul.tab li a:hover {
+	background-color: #fefbf7;
+}
+
+ul.tab li a:focus, .active {
+	background-color: #5bc9d7;
+}
+
+h1 {
+  text-align: left;
+  font-family: Sandoval;
+  font-size: 70px;
+  padding-top: 20px;
+  padding-left: 20px;
+  color: #D64933;
+}
+
+.appView {
+	background-color: #92DCE5;
+	color: #2B303A;
+}
+
+/*    ***** Feeds &&& Posts *****      */
+
+.feedList {
+	list-style-type: none;
+	padding: 5px;
+	display: inline-block;
+}
+
+.posts a:link, a:visited, a:hover {
+  color: #2B303A;
+  text-decoration: none;
+}
+
+.float {
+	float: right;
+}
+
+blockquote {
+  display: inline-block;
+  background-color: #FFF;
+  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 16px;
+  border-color: #eee #ddd #bbb;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  margin: 10px 5px;
+  padding: 0 16px 16px 16px;
+  max-width: 400px;
+
+}
+
+.fb-block {
+  position: relative;
+  max-width: 80%;
+  padding: 0 16px 40px 16px;
+  min-width: 300px;
+}
+
+.fb-prof {
+  position: relative;
+  top: 10px;
+  left: 0px;
+}
+
+.fb-name {
+  float: left;
+  position: absolute;
+  top: 12px;
+  left: 75px;
+  font-size: 15px;
+}
+
+.fb-time {
+  float: left;
+  top: 34px;
+  left: 75px;
+  position: absolute;
+  font-size: 13px;
+}
+
+.fb-fullPic {
+  position: relative;;
+  top: 20px;
+  max-width: 95%;
+}
+
+.fb-message {
+  position: relative;
+  top: 30px;
+  left: 25px;
+  max-width: 90%;
+}
+
+.fb-action {
+
+}
+
+.login-box {
+	text-align: center;
+  position: absolute;
+  top: 50%;
+	left:50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}

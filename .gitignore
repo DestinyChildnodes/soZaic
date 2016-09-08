@@ -1,0 +1,8 @@
+node_modules
+.DS_Store
+.AppleDouble
+.LSOverride
+azure.err
+npm-debug.log
+serverController/localApiKeys.js
+public/dist

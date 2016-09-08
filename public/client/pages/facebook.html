@@ -1,0 +1,36 @@
+<!-- TODO:
+Z Photo albums functionality.
+Y Change date format.
+1. Post reqs to FB from soZaic.
+Use additional get requests??
+ -->
+ <!DOCTYPE html>
+ <body>
+<div id="view" ng-init="fbFeed()">
+  <div class="login-box" ng-show="posts.length === 0" ng-click="authFB()">
+    <a class="btn btn-social btn-lg btn-facebook">
+  		<span class="fa fa-facebook"></span>Sign in with Facebook
+		</a>
+  </div>
+  <div id=" fb-Div" ng-if="posts.length > 0">
+    <div ng-click="fbPostCtrl(yoyoyo)">Click Me</div>
+    <div ng-repeat="post in posts">
+      <!-- <img src="https://scontent.xx.fbcdn.net/v/t1.0-0/s130x130/13260129_10206443134745736_5750099962261197669_n.jpg?oh=22f626c227b2dbacecd26a035f5cae19&oe=5841C84D" /> -->
+      <!-- <img src="https://scontent.xx.fbcdn.net/v/t1.0-9/s720x720/13260129_10206443134745736_5750099962261197669_n.jpg?oh=c464ad09a60edbb16eec706fecc83d07&oe=58508A40" /> -->
+      <div class="fb-li"><blockquote class="fb-block">
+        <img class="fb-prof" src={{post.profUrl}} />
+        <span class="fb-name">{{post.from.name}} posted</span>
+        <span class="fb-time">{{post.created_time | date : "MM-dd-yyyy"}}</span>
+        <div>
+          <!-- <div class="fb-name">{{post.from.name}}</div> -->
+          <img class="fb-fullPic" src="{{post.full_picture}}"/>
+          <div class="fb-fullPic" id="vidDiv" ng-if="post.source">
+            <video ng-src="{{ post.source | trustUrl }}" width="400" height="224" controls></video>
+          </div>
+          <div class="fb-message">{{post.message}}</div>
+        </div>
+      </blockquote></div>
+    </div>
+  </div>
+</div>
+</body>

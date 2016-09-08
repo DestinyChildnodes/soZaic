@@ -1,0 +1,57 @@
+{
+  "name": "sozaic",
+  "version": "1.0.0",
+  "description": "Social Media Mosaic",
+  "main": "index.js",
+  "scripts": {
+    "test": "chai"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akulaggarwal/soZaic.git"
+  },
+  "keywords": [
+    "greenfield"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akulaggarwal/soZaic/issues"
+  },
+  "homepage": "https://github.com/akulaggarwal/soZaic#readme",
+  "engines": {
+    "node": "4.1.1"
+  },
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-sanitize": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "express": "^4.14.0",
+    "express-partials": "^0.3.0",
+    "express-session": "^1.14.1",
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-mocha-test": "^0.12.7",
+    "grunt-nodemon": "^0.4.2",
+    "grunt-shell": "^1.3.1",
+    "instagram-node": "^0.5.8",
+    "jquery": "^3.1.0",
+    "moment": "^2.14.1",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-google-oauth2": "^0.1.6",
+    "passport-instagram": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.4",
+    "request": "^2.74.0",
+    "twitter": "^1.4.0",
+    "underscore": "^1.8.3"
+  }
+}
