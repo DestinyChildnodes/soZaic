@@ -1,0 +1,36 @@
+
+<div ng-class="{'login-box': content.length === 0}">
+      <h1 ng-if="content.length === 0">NO MEDIA, ADD MORE!!!</h1>
+
+      <button id="mxbutton" ng-click="sortRandom()" ng-show="content.length > 0" type="button" class="btn btn-primary">
+      	shuffle
+      </button>
+
+      <button id="mxbutton" ng-click="delete()" ng-show="content.length > 0" type="button" class="btn btn-primary">
+        delete
+      </button>
+</div>
+
+
+<div class="card-columns" ng-init ="getFeeds()">
+  <span class="card"  ng-repeat="item in content | orderBy: sortContent">
+      <iframe ng-if="item.link" src="{{item.link | instagramEmbedUrl}}" width="100%" height="550px" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+      <span ng-if="item.user.screen_name" class="posts"><blockquote><p><a href="https://twitter.com/{{ item.user.screen_name }}/status/{{ item.id_str
+      }}">{{ item.text }}</a></p>
+      -{{ item.user.screen_name }}(@{{ item.user.screen_name }})
+      {{ item.created_at }}</blockquote></span>
+
+      <iframe border="none" ng-if="item.snippet.publishedAt" width="100%" height="345px" ng-src="{{ item | youtubeEmbedUrl }}"></iframe>
+      <span ng-if="item.epoch" class="fb-li"><blockquote class="fb-block">
+        <img class="fb-prof" src={{item.profUrl}} />
+        <span class="fb-name">{{item.from.name}} posted</span>
+        <span class="fb-time">{{item.created_time | date : "MM-dd-yyyy"}}</span>
+        <div>
+          <img class="fb-fullPic" src="{{item.full_picture}}"/>
+          <div class="fb-fullPic" id="vidDiv" ng-if="item.source">
+            <video ng-src="{{ item.source | trustUrl }}" width="400" height="224" controls></video>
+          </div>
+          <div class="fb-message">{{item.message}}</div>
+        </div>
+      </blockquote></span>
+  </span>
